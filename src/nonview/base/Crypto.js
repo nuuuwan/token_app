@@ -8,6 +8,7 @@ import {
 
 const LOCAL_STORAGE_KEY_PUBLIC_KEY = "token-app-public-key";
 const LOCAL_STORAGE_KEY_SECRET_KEY = "token-app-secret-key";
+const LOCAL_STORAGE_KEY_TOKEN_URL_LIST = "token-app-token-url-list";
 
 export const CRYPTO_KEY_TYPE = {
   PUBLIC: "public",
@@ -87,5 +88,25 @@ export default class Crypto {
       )
     );
     return { publicKey, payload };
+  }
+
+  static getTokenUrlList() {
+    const dataJSON = localStorage.getItem(LOCAL_STORAGE_KEY_TOKEN_URL_LIST);
+    if (!dataJSON) {
+      return [];
+    }
+    return JSON.parse(dataJSON);
+  }
+
+  static addTokenUrl(url) {
+    let urlList = Crypto.getTokenUrlList();
+    urlList.push(url);
+    urlList = [...new Set(urlList)];
+    Crypto.setTokenUrlList(urlList);
+  }
+
+  static setTokenUrlList(urlList) {
+    const dataJSON = JSON.stringify(urlList);
+    localStorage.setItem(LOCAL_STORAGE_KEY_TOKEN_URL_LIST, dataJSON);
   }
 }
