@@ -13,6 +13,7 @@ export default class CreateTokenPage extends Component {
     const currentTimeUT = TimeX.getUnixTime();
     const token = Crypto.encryptToken({
       vehicleNumber: "ABC-1234",
+      priority: 12,
       timeCreatedUT: currentTimeUT,
       timeExpiryUT: currentTimeUT + SECONDS_IN.DAY,
     });
