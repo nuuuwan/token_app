@@ -1,49 +1,101 @@
-const nacl = require("tweetnacl");
+import { box, secretbox, randomBytes } from "tweetnacl";
+import {
+  decodeUTF8,
+  encodeUTF8,
+  encodeBase64,
+  decodeBase64,
+} from "tweetnacl-util";
 
-const LOCAL_STORAGE_KEY = "token-app-key-pair";
+const LOCAL_STORAGE_KEY_PUBLIC_KEY = "token-app-public-key";
+const LOCAL_STORAGE_KEY_SECRET_KEY = "token-app-secret-key";
 
 export const CRYPTO_KEY_TYPE = {
   PUBLIC: "public",
   SECRET: "secret",
 };
 
-export default class Crypto {
-  static getKeyPairFromLocalStorage() {
-    const dataJSON = localStorage.getItem(LOCAL_STORAGE_KEY);
-    if (dataJSON) {
-      return JSON.parse(dataJSON);
-    }
-    return null;
-  }
+const APP_KEY_PAIR = {
+  publicKey: "J+n2edb5P3HHRH5P6g2ZoIegPpduOjVW+OY2U7DHHUc=",
+  secretKey: "faAvuOy3pukmkPMN+QRVlhOoRDWE8C16ObOO2nebydA=",
+};
 
-  static setKeyPairToLocalStorage(keyPair) {
-    const dataJSON = JSON.stringify(keyPair);
-    localStorage.setItem(LOCAL_STORAGE_KEY, dataJSON);
+export default class Crypto {
+  static getNewNonce() {
+    return randomBytes(secretbox.nonceLength);
   }
 
   static getKeyPair() {
-    const raw = nacl.box.keyPair();
-    return {
-      publicKey: Crypto.serializeKey(raw.publicKey),
-      secretKey: Crypto.serializeKey(raw.secretKey),
+    const raw = box.keyPair();
+    const keyPair = {
+      publicKey: encodeBase64(raw.publicKey),
+      secretKey: encodeBase64(raw.secretKey),
     };
+    return keyPair;
   }
 
-  static serializeKey(uInt8ArrayKey) {
-    const s = window.btoa(JSON.stringify(uInt8ArrayKey));
-    return s;
+  static getKeyPairFromLocalStorage() {
+    const keyPair = {
+      publicKey: localStorage.getItem(LOCAL_STORAGE_KEY_PUBLIC_KEY),
+      secretKey: localStorage.getItem(LOCAL_STORAGE_KEY_SECRET_KEY),
+    };
+    return keyPair;
   }
 
-  static deserializeKey(s) {
-    const uInt8ArrayKey = JSON.parse(window.atob(s));
-    return uInt8ArrayKey;
+  static setKeyPairToLocalStorage(keyPair) {
+    localStorage.setItem(LOCAL_STORAGE_KEY_PUBLIC_KEY, keyPair.publicKey);
+    localStorage.setItem(LOCAL_STORAGE_KEY_SECRET_KEY, keyPair.secretKey);
   }
 
   static createToken(payload) {
-    return {
+    const keyPair = Crypto.getKeyPairFromLocalStorage();
+    if (!keyPair) {
+      throw Error("No keyPair in localStorage!");
+    }
+    const { publicKey, secretKey } = keyPair;
+    const nonceRaw = Crypto.getNewNonce();
+    const nonce = encodeBase64(nonceRaw);
+
+    const encryptedPayload = encodeBase64(
+      box(
+        decodeUTF8(JSON.stringify(payload)),
+        nonceRaw,
+        decodeBase64(APP_KEY_PAIR.publicKey),
+        decodeBase64(secretKey)
+      )
+    );
+    const token = {
       payload,
-      publicKey: "XXX",
-      payloadHash: "XXX",
+      nonce,
+      publicKey,
+      encryptedPayload,
     };
+    const isValid = Crypto.validateToken(token);
+    console.debug({ isValid });
+    return token;
+  }
+
+  static validateToken(token) {
+    const keyPair = Crypto.getKeyPairFromLocalStorage();
+    if (!keyPair) {
+      throw Error("No keyPair in localStorage!");
+    }
+    const issuerPublicKey = keyPair.publicKey;
+
+    const { payload, nonce, publicKey, encryptedPayload } = token;
+
+    const decryptedPayloadJSON = encodeUTF8(
+      box.open(
+        decodeBase64(encryptedPayload),
+        decodeBase64(nonce),
+        decodeBase64(issuerPublicKey),
+        decodeBase64(APP_KEY_PAIR.secretKey)
+      )
+    );
+
+    const payloadJSON = JSON.stringify(payload);
+    return (
+      publicKey === APP_KEY_PAIR.publicKey &&
+      decryptedPayloadJSON.localeCompare(payloadJSON) === 0
+    );
   }
 }
