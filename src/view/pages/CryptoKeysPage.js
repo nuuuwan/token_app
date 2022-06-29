@@ -18,6 +18,7 @@ export default class CryptoKeysPage extends Component {
 
   onClickGenerate() {
     const keyPair = Crypto.getKeyPair();
+    Crypto.setKeyPairToLocalStorage(keyPair);
     this.setState({ keyPair });
   }
 
