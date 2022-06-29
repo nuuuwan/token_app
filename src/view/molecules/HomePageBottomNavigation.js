@@ -40,7 +40,7 @@ export default function HomePageBottomNavigation({
           onClick={() => onClickOpenPage("cryptoKeys")}
         />
         <BottomNavigationAction
-          label="Tokens"
+          label="Create Token"
           icon={<NoteAddIcon />}
           onClick={() => onClickOpenPage("createToken")}
         />
