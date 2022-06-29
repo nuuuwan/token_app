@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import I18N, { BASE_LANG } from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
 
+import CustomAppBar from "../../view/molecules/CustomAppBar";
 import HomePageBottomNavigation from "../../view/molecules/HomePageBottomNavigation";
 import CreateTokenPage from "../../view/pages/CreateTokenPage";
 import CryptoKeysPage from "../../view/pages/CryptoKeysPage";
@@ -59,6 +60,7 @@ export default class HomePage extends Component {
   render() {
     return (
       <Box>
+        <CustomAppBar />
         {this.renderInnerPage()}
         <HomePageBottomNavigation />
       </Box>
