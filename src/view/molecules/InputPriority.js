@@ -1,7 +1,9 @@
-import LabelledTextInput from "../../view/molecules/LabelledTextInput";
-import Box from "@mui/material/Box";
 import Alert from "@mui/material/Alert";
+import Box from "@mui/material/Box";
+
 import Validate from "../../nonview/core/Validate";
+
+import LabelledTextInput from "../../view/molecules/LabelledTextInput";
 
 export default function InputPriority({ selectedPriority, onChangePriority }) {
   let severity, alertText;
