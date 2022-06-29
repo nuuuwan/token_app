@@ -30,6 +30,10 @@ export default function TokenView({ payload, publicKey, url }) {
           label="Time Created"
           text={TimeX.formatTime(payload.timeCreatedUT)}
         />
+        <LabelledText
+          label="Raw Public Key"
+          text={publicKey}
+        />
       </Box>
     </Stack>
   );
