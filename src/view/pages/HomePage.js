@@ -9,6 +9,7 @@ import CustomAppBar from "../../view/molecules/CustomAppBar";
 import HomePageBottomNavigation from "../../view/molecules/HomePageBottomNavigation";
 import CreateTokenPage from "../../view/pages/CreateTokenPage";
 import CryptoKeysPage from "../../view/pages/CryptoKeysPage";
+import ViewTokenPage from "../../view/pages/ViewTokenPage";
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -28,6 +29,9 @@ export default class HomePage extends Component {
     }
     if (!context.lang) {
       context.lang = BASE_LANG;
+    }
+    if (!context.token) {
+      context.token = "";
     }
     return context;
   }
@@ -52,6 +56,8 @@ export default class HomePage extends Component {
         return <CryptoKeysPage />;
       case "createToken":
         return <CreateTokenPage />;
+      case "viewToken":
+        return <ViewTokenPage />;
       default:
         return <CryptoKeysPage />;
     }
