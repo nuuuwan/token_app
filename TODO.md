@@ -1,9 +1,11 @@
 # LOW
 
-[] Save to browser
 [] Save to clipboard
+[] Add HelpMenu etc.
 
 # MEDIUM
+
+[] Implement payloadHash
 
 # HIGH
 
