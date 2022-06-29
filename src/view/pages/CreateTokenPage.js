@@ -2,17 +2,11 @@ import { Component } from "react";
 
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
+import TokenView from "../../view/molecules/TokenView";
 
 import Crypto from "../../nonview/base/Crypto";
 import TimeX, { SECONDS_IN } from "../../nonview/base/TimeX";
-
-const STYLE_TOKEN = {
-  wordBreak: "break-all",
-};
-
-const currentTimeUT = TimeX.getUnixTime();
 
 export default class CreateTokenPage extends Component {
   constructor(props) {
@@ -23,6 +17,7 @@ export default class CreateTokenPage extends Component {
   async componentDidMount() {}
 
   onClickCreateToken() {
+    const currentTimeUT = TimeX.getUnixTime();
     const token = Crypto.createToken({
       vehicleNumber: "ABC-1234",
       timeCreatedUT: currentTimeUT,
@@ -42,7 +37,7 @@ export default class CreateTokenPage extends Component {
         >
           Create Token
         </Button>
-        <Typography sx={STYLE_TOKEN}>{JSON.stringify(token)}</Typography>
+        <TokenView token={token} />
       </Stack>
     );
   }
