@@ -46,7 +46,7 @@ export default class Crypto {
     localStorage.setItem(LOCAL_STORAGE_KEY_SECRET_KEY, keyPair.secretKey);
   }
 
-  static createToken(payload) {
+  static encryptToken(payload) {
     const keyPair = Crypto.getKeyPairFromLocalStorage();
     if (!keyPair) {
       throw Error("No keyPair in localStorage!");
@@ -63,37 +63,29 @@ export default class Crypto {
         decodeBase64(secretKey)
       )
     );
-    const token = {
-      payload,
+    const tokenInner = {
       nonce,
       publicKey,
       encryptedPayload,
     };
+    const token = encodeBase64(decodeUTF8(JSON.stringify(tokenInner)));
     return token;
   }
 
-  static validateToken(token) {
-    const keyPair = Crypto.getKeyPairFromLocalStorage();
-    if (!keyPair) {
-      throw Error("No keyPair in localStorage!");
-    }
-    const issuerPublicKey = keyPair.publicKey;
+  static decryptToken(token) {
+    const tokenInner = JSON.parse(encodeUTF8(decodeBase64(token)));
+    const { nonce, publicKey, encryptedPayload } = tokenInner;
 
-    const { payload, nonce, publicKey, encryptedPayload } = token;
-
-    const decryptedPayloadJSON = encodeUTF8(
-      box.open(
-        decodeBase64(encryptedPayload),
-        decodeBase64(nonce),
-        decodeBase64(issuerPublicKey),
-        decodeBase64(APP_KEY_PAIR.secretKey)
+    const payload = JSON.parse(
+      encodeUTF8(
+        box.open(
+          decodeBase64(encryptedPayload),
+          decodeBase64(nonce),
+          decodeBase64(publicKey),
+          decodeBase64(APP_KEY_PAIR.secretKey)
+        )
       )
     );
-
-    const payloadJSON = JSON.stringify(payload);
-    return (
-      publicKey === issuerPublicKey &&
-      decryptedPayloadJSON.localeCompare(payloadJSON) === 0
-    );
+    return payload;
   }
 }
