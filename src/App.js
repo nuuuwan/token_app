@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 
+import Box from "@mui/material/Box";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-import HomePage from "./view/pages/HomePage.js";
+import CryptoKeysPage from "./view/pages/CryptoKeysPage.js";
 
 const THEME = createTheme({
   palette: {
@@ -19,11 +20,21 @@ const THEME = createTheme({
   },
 });
 
+const STYLE = {
+  width: 400,
+  maxWidth: "90%",
+  margin: "auto",
+  marginTop: 5,
+  marginBottom: 5,
+};
+
 export default class App extends Component {
   render() {
     return (
       <ThemeProvider theme={THEME}>
-        <HomePage />
+        <Box sx={STYLE}>
+          <CryptoKeysPage />
+        </Box>
       </ThemeProvider>
     );
   }
