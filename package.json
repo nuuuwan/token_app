@@ -25,6 +25,7 @@
     "stylelint-config-standard": "^26.0.0",
     "stylelint-order": "^5.0.0",
     "stylelint-scss": "^4.2.0",
+    "tweetnacl": "^1.0.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
