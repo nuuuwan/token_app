@@ -7,7 +7,10 @@ export default function LabelledText({ label, text, color }) {
       <Typography variant="subtitle1" sx={{ fontSize: "67%" }}>
         {label}
       </Typography>
-      <Typography variant="body1" sx={{ fontSize: "133%", color, wordWrap:"break-word" }}>
+      <Typography
+        variant="body1"
+        sx={{ fontSize: "133%", color, wordWrap: "break-word" }}
+      >
         {text}
       </Typography>
     </Box>
