@@ -1,13 +1,13 @@
 import QRCode from "react-qr-code";
 
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 
 import TimeX from "../../nonview/base/TimeX";
-import TrustedSourceView from "../../view/molecules/TrustedSourceView";
 
 import LabelledText from "../../view/molecules/LabelledText";
+import TrustedSourceView from "../../view/molecules/TrustedSourceView";
 
 export default function TokenView({ payload, publicKey, url }) {
   const isExpired = payload.timeExpiryUT < TimeX.getUnixTime();
