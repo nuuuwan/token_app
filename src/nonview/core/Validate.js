@@ -11,7 +11,6 @@ export default class Validate {
     if (priorityInt < 1 || priorityInt > 10_000) {
       return false;
     }
-    console.debug({ priorityInt });
     return true;
   }
 
