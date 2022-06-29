@@ -1,5 +1,5 @@
 const DELIM_CONTEXT_ITEM = "&";
-const DELIM_KV = "=";
+const DELIM_KV = ":";
 export default class URLContext {
   static getURL() {
     return window.location.href;
@@ -23,7 +23,7 @@ export default class URLContext {
         return kvStr.split(DELIM_KV);
       })
       .reduce(function (context, [k, v]) {
-        context[k] = v.replaceAll("%20", " ");
+        context[k] = v;
         return context;
       }, {});
   }
