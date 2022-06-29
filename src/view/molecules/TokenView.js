@@ -13,26 +13,24 @@ export default function TokenView({ payload, publicKey, url }) {
   const isExpired = payload.timeExpiryUT < TimeX.getUnixTime();
   const color = isExpired ? "red" : "darkgreen";
   return (
-    <Box sx={{ m: 1, p: 3 }}>
-      <Stack spacing={1}>
-        <Typography variant="h4">Token</Typography>
-        <TrustedSourceView publicKey={publicKey} />
-        <QRCode value={url} />
-        <Box>
-          <LabelledText label="Vehicle Number" text={payload.vehicleNumber} />
-          <LabelledText label="Priority" text={payload.priority} />
-          <LabelledText
-            label="Time Expiry"
-            text={TimeX.formatTime(payload.timeExpiryUT)}
-            color={color}
-          />
+    <Stack spacing={1} sx={{ m: 1, p: 3 }}>
+      <Typography variant="h4">Token</Typography>
+      <TrustedSourceView publicKey={publicKey} />
+      <QRCode value={url} />
+      <Box>
+        <LabelledText label="Vehicle Number" text={payload.vehicleNumber} />
+        <LabelledText label="Priority" text={payload.priority} />
+        <LabelledText
+          label="Time Expiry"
+          text={TimeX.formatTime(payload.timeExpiryUT)}
+          color={color}
+        />
 
-          <LabelledText
-            label="Time Created"
-            text={TimeX.formatTime(payload.timeCreatedUT)}
-          />
-        </Box>
-      </Stack>
-    </Box>
+        <LabelledText
+          label="Time Created"
+          text={TimeX.formatTime(payload.timeCreatedUT)}
+        />
+      </Box>
+    </Stack>
   );
 }
