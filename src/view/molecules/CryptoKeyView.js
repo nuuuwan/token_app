@@ -9,7 +9,6 @@ import { CRYPTO_KEY_TYPE } from "../../nonview/base/Crypto";
 
 import AlignCenter from "../../view/atoms/AlignCenter";
 
-const MAX_CHARS_TO_DISPLAY = 64;
 const STYLE_KEY = {
   wordBreak: "break-all",
 };
@@ -61,8 +60,7 @@ export default function CryptoKeyView({ cryptoKey, cryptoKeyType }) {
         <AlignCenter>
           <Icon sx={{ color }} />
           <Typography variant="body1" style={STYLE_KEY} color={color}>
-            {"***" +
-              cryptoKey.substring(cryptoKey.length - MAX_CHARS_TO_DISPLAY)}
+            {cryptoKey}
           </Typography>
         </AlignCenter>
       </Paper>
