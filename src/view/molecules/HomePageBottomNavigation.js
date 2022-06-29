@@ -35,12 +35,12 @@ export default function HomePageBottomNavigation({
           onClick={onClickRefresh}
         />
         <BottomNavigationAction
-          label="Keys"
+          label="Crypto Keys"
           icon={<KeyIcon />}
           onClick={() => onClickOpenPage("cryptoKeys")}
         />
         <BottomNavigationAction
-          label="Token"
+          label="Tokens"
           icon={<NoteAddIcon />}
           onClick={() => onClickOpenPage("createToken")}
         />
