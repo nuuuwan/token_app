@@ -1,11 +1,11 @@
 # LOW
 
 [] Save to clipboard
-[] Add HelpMenu etc.
 
 # MEDIUM
 
-[] Implement payloadHash
+[] Translations
+[] Recent Tokens (COMPLETE)
 
 # HIGH
 
