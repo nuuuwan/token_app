@@ -4,6 +4,9 @@ function isLetter(c) {
 
 export default class Validate {
   static cryptoKey(cryptoKey) {
+    if (!cryptoKey) {
+      return false;
+    }
     return cryptoKey.length === 44;
   }
 
