@@ -2,10 +2,15 @@ import { Component } from "react";
 
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
 
 import Crypto from "../../nonview/base/Crypto";
 import TimeX, { SECONDS_IN } from "../../nonview/base/TimeX";
+
+const STYLE_TOKEN = {
+  wordBreak: "break-all",
+};
 
 const currentTimeUT = TimeX.getUnixTime();
 
@@ -37,7 +42,7 @@ export default class CreateTokenPage extends Component {
         >
           Create Token
         </Button>
-        {JSON.stringify(token)}
+        <Typography sx={STYLE_TOKEN}>{JSON.stringify(token)}</Typography>
       </Stack>
     );
   }
