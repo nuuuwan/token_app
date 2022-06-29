@@ -7,34 +7,27 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 import BugReportIcon from "@mui/icons-material/BugReport";
-import CloudQueueIcon from "@mui/icons-material/CloudQueue";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import GoogleIcon from "@mui/icons-material/Google";
 import SettingsIcon from "@mui/icons-material/Settings";
-import TwitterIcon from "@mui/icons-material/Twitter";
 
 import { t } from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
 
+const URL_GOOGLE_DOC_HELP =
+  "https://docs.google.com/document" +
+  "/d/1poEUfKJYhf_x07zbJfiqch7jHXhWJVz5RLGsj0ULHQ0";
+
 const MENU_ITEM_LIST = [
   {
-    name: "Help (Twitter)",
-    url: "https://twitter.com/nuuuwan/status/1539982615662383105",
-    Icon: TwitterIcon,
+    name: "Help (Google Doc)",
+    url: URL_GOOGLE_DOC_HELP,
+    Icon: GoogleIcon,
   },
   {
-    name: "Trends (WordCloud)",
-    url: "https://raw.githubusercontent.com/nuuuwan/news_lk2/data/wordcloud.png",
-    Icon: CloudQueueIcon,
-  },
-  {
-    name: "Code Repository - App",
+    name: "Code Repository",
     url: "http://github.com/nuuuwan/token_app",
-    Icon: GitHubIcon,
-  },
-  {
-    name: "Code Repository - Data",
-    url: "https://github.com/nuuuwan/news_lk2/tree/data",
     Icon: GitHubIcon,
   },
   {
