@@ -5,7 +5,7 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import Paper from "@mui/material/Paper";
 import KeyIcon from "@mui/icons-material/Key";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
-import RefreshIcon from "@mui/icons-material/Refresh";
+import ViewListIcon from "@mui/icons-material/ViewList";
 
 import URLContext from "../../nonview/base/URLContext";
 
@@ -13,15 +13,11 @@ export default function HomePageBottomNavigation({
   timeLatestRefresh,
   onSelectLanguage,
 }) {
-  const onClickRefresh = function () {
-    window.location.reload(true);
-  };
-
   const onClickOpenPage = function (page) {
     let context = URLContext.getContext();
     context.page = page;
     URLContext.setContext(context);
-    onClickRefresh();
+    window.location.reload(true);
   };
 
   return (
@@ -31,10 +27,6 @@ export default function HomePageBottomNavigation({
     >
       <BottomNavigation showLabels>
         <BottomNavigationAction
-          icon={<RefreshIcon />}
-          onClick={onClickRefresh}
-        />
-        <BottomNavigationAction
           label="Crypto Keys"
           icon={<KeyIcon />}
           onClick={() => onClickOpenPage("cryptoKeys")}
@@ -43,6 +35,11 @@ export default function HomePageBottomNavigation({
           label="Create Token"
           icon={<NoteAddIcon />}
           onClick={() => onClickOpenPage("createToken")}
+        />
+        <BottomNavigationAction
+          label="My Tokens"
+          icon={<ViewListIcon />}
+          onClick={() => onClickOpenPage("tokenList")}
         />
       </BottomNavigation>
     </Paper>
