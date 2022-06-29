@@ -3,6 +3,10 @@ function isLetter(c) {
 }
 
 export default class Validate {
+  static cryptoKey(cryptoKey) {
+    return cryptoKey.length === 44;
+  }
+
   static priority(priority) {
     const priorityInt = parseInt(priority);
     if (!Number.isInteger(priorityInt)) {
