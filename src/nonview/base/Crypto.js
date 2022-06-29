@@ -69,8 +69,6 @@ export default class Crypto {
       publicKey,
       encryptedPayload,
     };
-    const isValid = Crypto.validateToken(token);
-    console.debug({ isValid });
     return token;
   }
 
@@ -94,7 +92,7 @@ export default class Crypto {
 
     const payloadJSON = JSON.stringify(payload);
     return (
-      publicKey === APP_KEY_PAIR.publicKey &&
+      publicKey === issuerPublicKey &&
       decryptedPayloadJSON.localeCompare(payloadJSON) === 0
     );
   }
