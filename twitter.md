@@ -5,7 +5,7 @@ What if there was a place where all #SriLanka could read news?
 A place without the segregations of language
 and the resulting echo chambers?
 
-https://nuuuwan.github.io/news_lk_app
+https://nuuuwan.github.io/token_app
 is a #BabyStep in this direction.
 
 Read on for details.
@@ -64,7 +64,7 @@ between publishing and turning up on #NewsAppLK)
 ...
 
 6/ The react app is at
-http://github.com/nuuuwan/news_lk_app
+http://github.com/nuuuwan/token_app
 
 The data and scraping logic is at
 https://github.com/nuuuwan/news_lk2/tree/data

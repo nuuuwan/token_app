@@ -13,7 +13,7 @@ export default function VersionWidget() {
       justifyContent="center"
     >
       <Typography variant="caption" component="div">
-        Sri Lanka News by @nuuuwan
+        Tokens by @nuuuwan
       </Typography>
       <Typography variant="caption" component="div">
         Last Update {VERSION}

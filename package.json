@@ -1,6 +1,6 @@
 {
-  "name": "news_lk_app",
-  "homepage": "https://nuuuwan.github.io/news_lk_app",
+  "name": "token_app",
+  "homepage": "https://nuuuwan.github.io/token_app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

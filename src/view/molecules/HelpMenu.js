@@ -29,7 +29,7 @@ const MENU_ITEM_LIST = [
   },
   {
     name: "Code Repository - App",
-    url: "http://github.com/nuuuwan/news_lk_app",
+    url: "http://github.com/nuuuwan/token_app",
     Icon: GitHubIcon,
   },
   {
@@ -39,7 +39,7 @@ const MENU_ITEM_LIST = [
   },
   {
     name: "Report Bugs",
-    url: "https://github.com/nuuuwan/news_lk_app/issues",
+    url: "https://github.com/nuuuwan/token_app/issues",
     Icon: BugReportIcon,
   },
 ];
