@@ -24,8 +24,8 @@ const STYLE = {
   width: 400,
   maxWidth: "90%",
   margin: "auto",
-  marginTop: 5,
-  marginBottom: 5,
+  marginTop: 1,
+  marginBottom: 1,
 };
 
 export default class App extends Component {
