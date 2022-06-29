@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Box from "@mui/material/Box";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-import CryptoKeysPage from "./view/pages/CryptoKeysPage.js";
+import HomePage from "./view/pages/HomePage.js";
 
 const THEME = createTheme({
   palette: {
@@ -33,7 +33,7 @@ export default class App extends Component {
     return (
       <ThemeProvider theme={THEME}>
         <Box sx={STYLE}>
-          <CryptoKeysPage />
+          <HomePage />
         </Box>
       </ThemeProvider>
     );
