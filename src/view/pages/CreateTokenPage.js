@@ -2,14 +2,16 @@ import { Component } from "react";
 
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
 
 import Crypto from "../../nonview/base/Crypto";
 import TimeX, { SECONDS_IN } from "../../nonview/base/TimeX";
 import URLContext from "../../nonview/base/URLContext";
-import InputVehicleNumber from "../../view/molecules/InputVehicleNumber";
-import InputPriority from "../../view/molecules/InputPriority";
 import Validate from "../../nonview/core/Validate";
+
+import InputPriority from "../../view/molecules/InputPriority";
+import InputVehicleNumber from "../../view/molecules/InputVehicleNumber";
 
 export default class CreateTokenPage extends Component {
   constructor(props) {
@@ -51,7 +53,8 @@ export default class CreateTokenPage extends Component {
       Validate.vehicleNumber(vehicleNumber) && Validate.priority(priority);
 
     return (
-      <Stack spacing={2}>
+      <Stack spacing={1} sx={{ m: 1, p: 3 }}>
+        <Typography variant="h4">Create Token</Typography>
         <InputVehicleNumber
           selectedVehicleNumber={vehicleNumber}
           onChangeVehicleNumber={this.onChangeVehicleNumber.bind(this)}
