@@ -11,11 +11,11 @@ export default class ViewTokenPage extends Component {
   render() {
     const context = URLContext.getContext();
     const { token } = context;
-    const payload = Crypto.decryptToken(token);
+    const { publicKey, payload } = Crypto.decryptToken(token);
     const url = URLContext.getURL();
     return (
       <Box>
-        <TokenView payload={payload} url={url} />
+        <TokenView payload={payload} publicKey={publicKey} url={url} />
       </Box>
     );
   }
