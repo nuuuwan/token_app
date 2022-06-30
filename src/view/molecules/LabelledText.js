@@ -5,7 +5,6 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import CircleIcon from "@mui/icons-material/Circle";
 import DirectionsCarFilledIcon from "@mui/icons-material/DirectionsCarFilled";
 import LowPriorityIcon from "@mui/icons-material/LowPriority";
-
 import MoreTimeIcon from '@mui/icons-material/MoreTime';
 import AlignCenter from "../../view/atoms/AlignCenter";
 import LockOpenIcon from '@mui/icons-material/LockOpen';
@@ -26,29 +25,32 @@ export default function LabelledText({ label, text, color, noLabel }) {
   }
   if (noLabel) {
     return (
-      <Box>
-        <AlignCenter>
-          <Tooltip title={label}>
-            <Icon sx={{ color, opacity: 0.5 }} />
-          </Tooltip>
-          <Typography
-            variant="body1"
-            sx={{ fontSize: "133%", color, wordWrap: "break-word" }}
-          >
-            {text}
-          </Typography>
-        </AlignCenter>
-      </Box>
+      <AlignCenter>
+        <Tooltip title={label}>
+          <Icon sx={{ opacity: 0.33}} />
+        </Tooltip>
+        <Typography
+          variant="h6"
+          sx={{  color, wordWrap: "break-word" }}
+        >
+          {text}
+        </Typography>
+      </AlignCenter>
     );
   } else {
     return (
       <Box sx={{ p: 0.5 }}>
-        <Typography variant="subtitle1" sx={{ fontSize: "67%" }}>
-          {label}
-        </Typography>
+
+        <AlignCenter>
+          <Icon sx={{ opacity: 0.33 }} />
+          <Typography variant="caption" sx={{opacity: 0.5 }}>
+            {label}
+          </Typography>
+        </AlignCenter>
+
         <Typography
-          variant="body1"
-          sx={{ fontSize: "133%", color, wordWrap: "break-word" }}
+          variant="h6"
+          sx={{  color, wordWrap: "break-word" }}
         >
           {text}
         </Typography>
