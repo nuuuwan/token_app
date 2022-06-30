@@ -47,7 +47,6 @@ export default function TokenView({ tokenInfo, short }) {
     return (
       <Stack spacing={1} sx={{ m: 1, p: 3 }}>
         <Typography variant="h4">Token</Typography>
-        {renderedSource}
         <QRCode value={url} />
         <Box>
           <LabelledText label="Vehicle Number" text={payload.vehicleNumber} />
@@ -63,6 +62,7 @@ export default function TokenView({ tokenInfo, short }) {
             text={TimeX.formatTime(payload.timeCreatedUT)}
           />
           <LabelledText label="Public Key" text={publicKey} />
+          {renderedSource}          
         </Box>
       </Stack>
     );
