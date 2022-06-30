@@ -4,10 +4,11 @@ import Typography from "@mui/material/Typography";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import CircleIcon from "@mui/icons-material/Circle";
 import DirectionsCarFilledIcon from "@mui/icons-material/DirectionsCarFilled";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
 import LowPriorityIcon from "@mui/icons-material/LowPriority";
-import MoreTimeIcon from '@mui/icons-material/MoreTime';
+import MoreTimeIcon from "@mui/icons-material/MoreTime";
+
 import AlignCenter from "../../view/atoms/AlignCenter";
-import LockOpenIcon from '@mui/icons-material/LockOpen';
 
 const DEFAULT_ICON = CircleIcon;
 const LABEL_TO_ICON = {
@@ -27,12 +28,9 @@ export default function LabelledText({ label, text, color, noLabel }) {
     return (
       <AlignCenter>
         <Tooltip title={label}>
-          <Icon sx={{ opacity: 0.33}} />
+          <Icon sx={{ opacity: 0.33 }} />
         </Tooltip>
-        <Typography
-          variant="h6"
-          sx={{  color, wordWrap: "break-word" }}
-        >
+        <Typography variant="h6" sx={{ color, wordWrap: "break-word" }}>
           {text}
         </Typography>
       </AlignCenter>
@@ -40,18 +38,14 @@ export default function LabelledText({ label, text, color, noLabel }) {
   } else {
     return (
       <Box sx={{ p: 0.5 }}>
-
         <AlignCenter>
           <Icon sx={{ opacity: 0.33 }} />
-          <Typography variant="caption" sx={{opacity: 0.5 }}>
+          <Typography variant="caption" sx={{ opacity: 0.5 }}>
             {label}
           </Typography>
         </AlignCenter>
 
-        <Typography
-          variant="h6"
-          sx={{  color, wordWrap: "break-word" }}
-        >
+        <Typography variant="h6" sx={{ color, wordWrap: "break-word" }}>
           {text}
         </Typography>
       </Box>
