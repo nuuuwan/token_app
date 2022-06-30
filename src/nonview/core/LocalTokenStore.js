@@ -11,7 +11,7 @@ export default class LocalTokenStore {
         (x) => x
       )
     ).sort(function (a, b) {
-      return a.payload.timeExpiryUT - b.payload.timeExpiryUT;
+      return b.payload.timeExpiryUT - a.payload.timeExpiryUT;
     });
   }
 
@@ -20,7 +20,8 @@ export default class LocalTokenStore {
     if (!dataJSON) {
       return [];
     }
-    return JSON.parse(dataJSON);
+    const tokenInfoList = JSON.parse(dataJSON);
+    return LocalTokenStore.dedupeAndSort(tokenInfoList);
   }
 
   static addTokenInfo(tokenInfo) {
