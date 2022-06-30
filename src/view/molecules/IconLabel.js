@@ -21,17 +21,18 @@ const LABEL_TO_ICON = {
   "Secret Key": LockIcon,
 };
 
-export default function IconLabel({ label }) {
+export default function IconLabel({ label, star }) {
   let Icon = LABEL_TO_ICON[label];
   if (!Icon) {
     Icon = DEFAULT_ICON;
   }
 
+  const starStr = star ? "*" : "";
   return (
     <AlignCenter>
       <Icon sx={{ opacity: 0.33 }} />
       <Typography variant="caption" sx={{ opacity: 0.5 }}>
-        {t(label)}
+        {t(label) + starStr}
       </Typography>
     </AlignCenter>
   );

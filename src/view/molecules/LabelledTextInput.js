@@ -15,7 +15,7 @@ export default function LabelledTextInput({
   };
   return (
     <Box sx={{ p: 0.5 }}>
-      <IconLabel label={label} />
+      <IconLabel label={label} star />
       <TextField
         value={text}
         onChange={onChangeInner}
