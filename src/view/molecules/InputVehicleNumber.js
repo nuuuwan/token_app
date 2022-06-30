@@ -22,12 +22,34 @@ export default function InputVehicleNumber({
       "A valid vehicle number should have the format AB-1234 or ABC-1234";
   }
 
+  const onChangeInner = function (newVehicleNumber) {
+    newVehicleNumber = newVehicleNumber.toUpperCase();
+
+    const c1 = newVehicleNumber.substring(1, 2);
+    const c2 = newVehicleNumber.substring(2, 3);
+    const c3 = newVehicleNumber.substring(3, 4);
+
+    for (let i of [1, 2]) {
+      const cLetter = newVehicleNumber.substring(i, i + 1);
+      const cInteger = newVehicleNumber.substring(i + 1, i + 2);
+
+      if (Validate.isLetter(cLetter) && Validate.isInteger(cInteger)) {
+        newVehicleNumber =
+          newVehicleNumber.substring(0, i + 1) +
+          "-" +
+          newVehicleNumber.substring(i + 1);
+      }
+    }
+
+    onChangeVehicleNumber(newVehicleNumber);
+  };
+
   return (
     <Box>
       <LabelledTextInput
         label="Vehicle Number"
         text={selectedVehicleNumber}
-        onChange={onChangeVehicleNumber}
+        onChange={onChangeInner}
       />
       <Alert severity={severity}>{alertText}</Alert>
     </Box>
