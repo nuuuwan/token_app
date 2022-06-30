@@ -7,19 +7,7 @@ import KeyIcon from "@mui/icons-material/Key";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
 import ViewListIcon from "@mui/icons-material/ViewList";
 
-import URLContext from "../../nonview/base/URLContext";
-
-export default function HomePageBottomNavigation({
-  timeLatestRefresh,
-  onSelectLanguage,
-}) {
-  const onClickOpenPage = function (page) {
-    let context = URLContext.getContext();
-    context.page = page;
-    URLContext.setContext(context);
-    window.location.reload(true);
-  };
-
+export default function HomePageBottomNavigation({ onClickOpenPage }) {
   return (
     <Paper
       sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}

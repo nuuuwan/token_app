@@ -41,9 +41,18 @@ export default class HomePage extends Component {
     return context;
   }
 
+  componentDidMount() {
+    this.isComponentMounted = true;
+  }
+
   setContext(newContext) {
     const oldContext = this.getContext();
     const context = { ...oldContext, ...newContext };
+
+    if (context.page !== "viewToken") {
+      context.token = "";
+    }
+
     URLContext.setContext(context);
     I18N.setLang(context.lang);
 
@@ -52,7 +61,11 @@ export default class HomePage extends Component {
     }
   }
 
-  async componentDidMount() {}
+  onClickOpenPage(page) {
+    let context = URLContext.getContext();
+    context.page = page;
+    this.setContext(context);
+  }
 
   renderInnerPage() {
     const { context } = this.state;
@@ -71,11 +84,15 @@ export default class HomePage extends Component {
   }
 
   render() {
+    const { context } = this.state;
+    const key = JSON.stringify(context);
     return (
-      <Box>
+      <Box key={key}>
         <CustomAppBar />
         {this.renderInnerPage()}
-        <HomePageBottomNavigation />
+        <HomePageBottomNavigation
+          onClickOpenPage={this.onClickOpenPage.bind(this)}
+        />
       </Box>
     );
   }
