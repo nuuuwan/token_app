@@ -62,7 +62,7 @@ export default function TokenView({ tokenInfo, short }) {
             text={TimeX.formatTime(payload.timeCreatedUT)}
           />
           <LabelledText label="Public Key" text={publicKey} />
-          {renderedSource}          
+          {renderedSource}
         </Box>
       </Stack>
     );
