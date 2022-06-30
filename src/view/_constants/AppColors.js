@@ -5,8 +5,8 @@ const AppColors = {
   Secondary: SriLankaColors.Tamil,
 
   Issuer: SriLankaColors.Tamil,
-  Receiver: SriLankaColors.Muslim,
-  QRCode: SriLankaColors.Sinhala,
+  Receiver: SriLankaColors.Sinhala,
+  QRCode: SriLankaColors.Muslim,
 };
 
 export default AppColors;

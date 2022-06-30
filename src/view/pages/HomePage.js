@@ -31,8 +31,8 @@ export default class HomePage extends Component {
     if (!context.page) {
       context.page = "tokenList";
     }
-    if (!context.appMode) {
-      context.appMode = "receiver";
+    if (!context.mode) {
+      context.mode = "receiver";
     }
     if (!context.lang) {
       context.lang = BASE_LANG;
@@ -89,7 +89,10 @@ export default class HomePage extends Component {
 
     return (
       <Box key={key}>
-        <CustomAppBar title={innerPageConfig.label} />
+        <CustomAppBar
+          title={innerPageConfig.label}
+          Icon={innerPageConfig.Icon}
+        />
         <Box sx={STYLE_INNER_PAGE_BOX}>
           <innerPageConfig.Page
             onClickOpenPage={this.onClickOpenPage.bind(this)}

@@ -4,6 +4,7 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import AlignCenter from "../../view/atoms/AlignCenter"
 
 import { t } from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
@@ -18,15 +19,21 @@ const STYLE = {
   zIndex: 1,
 };
 
-export default function CustomAppBar({ title }) {
+export default function CustomAppBar({ title, Icon }) {
   const isAdminMode = URLContext.getContext().mode === "issuer";
   const color = isAdminMode ? AppColors.Issuer : AppColors.Receiver;
   return (
     <Box sx={STYLE}>
       <AppBar sx={{ backgroundColor: color }} elevation={10}>
         <Toolbar>
+          <AlignCenter>
+            <Icon sx={{marginRight: 1}} />
+            <Typography variant="h6" component="div" >
+              {t(title)}
+            </Typography>
+          </AlignCenter>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            {t(title)}
+            {" "}
           </Typography>
           <HelpMenu />
         </Toolbar>
