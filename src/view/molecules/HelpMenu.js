@@ -5,12 +5,14 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 import BugReportIcon from "@mui/icons-material/BugReport";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import GoogleIcon from "@mui/icons-material/Google";
 import SettingsIcon from "@mui/icons-material/Settings";
+import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 
 import { t } from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
@@ -58,6 +60,23 @@ export default function HelpMenu() {
     window.location.reload(true);
   };
 
+  const onClickAdminMode = function () {
+    let context = URLContext.getContext();
+    context.mode = "issuer";
+    URLContext.setContext(context);
+    window.location.reload(true);
+  };
+
+  const onClickUserMode = function () {
+    let context = URLContext.getContext();
+    context.mode = "receiver";
+    context.page = "tokenList";
+    URLContext.setContext(context);
+    window.location.reload(true);
+  };
+
+  const isAdminMode = URLContext.getContext().mode === "issuer";
+
   return (
     <div>
       <IconButton onClick={onClick}>
@@ -89,6 +108,21 @@ export default function HelpMenu() {
             </MenuItem>
           );
         })}
+        {isAdminMode ? (
+          <MenuItem onClick={onClickUserMode}>
+            <ListItemIcon>
+              <SupervisorAccountIcon />
+            </ListItemIcon>
+            <ListItemText>{t("User Mode")}</ListItemText>
+          </MenuItem>
+        ) : (
+          <MenuItem onClick={onClickAdminMode}>
+            <ListItemIcon>
+              <AdminPanelSettingsIcon />
+            </ListItemIcon>
+            <ListItemText>{t("Admin Mode")}</ListItemText>
+          </MenuItem>
+        )}
         <MenuItem onClick={onClickCopy}>
           <ListItemIcon>
             <ContentCopyIcon />
