@@ -1,5 +1,5 @@
 const TRUSTED_SOURCE_IDX = {
-  "wkDWzZTXxBVC+pvnvgliubS7PC2ppr4Vogt2B8QQGAs=": {
+  "EYnHY8C8ymPZnEe7/sFEEuaTCj5erVCFdf85F8dQJkU=": {
     name: "@nuuuwan",
   },
 };
