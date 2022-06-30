@@ -2,16 +2,17 @@ import React, { Component } from "react";
 
 import Box from "@mui/material/Box";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import AppColors from "./view/_constants/AppColors";
 
 import HomePage from "./view/pages/HomePage.js";
 
 const THEME = createTheme({
   palette: {
     primary: {
-      main: "#444",
+      main: AppColors.Primary,
     },
     secondary: {
-      main: "#888",
+      main: AppColors.Secondary,
     },
   },
   typography: {

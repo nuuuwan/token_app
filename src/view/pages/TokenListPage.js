@@ -6,7 +6,24 @@ import LocalTokenStore from "../../nonview/core/LocalTokenStore";
 import TokenView from "../../view/molecules/TokenView";
 import AbstractInnerPage from "../../view/pages/AbstractInnerPage";
 
+import ViewListIcon from "@mui/icons-material/ViewList";
+import PageLink from "../../view/molecules/PageLink"
+
 export default class TokenListPage extends AbstractInnerPage {
+  get page() {
+    return "tokenList";
+  }
+  get label() {
+    return "My Tokens";
+  }
+
+  get Icon() {
+    return ViewListIcon;
+  }
+  get showInOnlyAdminMode() {
+    return false;
+  }
+
   renderTokenList() {
     const tokenInfoList = LocalTokenStore.getTokenInfoList();
 
@@ -14,6 +31,10 @@ export default class TokenListPage extends AbstractInnerPage {
       return (
         <Alert severity="warning">
           You have no tokens stored on this device.
+          <PageLink
+            page={"scanToken"}
+            onClickOpenPage={this.props.onClickOpenPage}
+          />
         </Alert>
       );
     }

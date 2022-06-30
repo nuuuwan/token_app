@@ -5,9 +5,26 @@ import URLContext from "../../nonview/base/URLContext";
 import LocalTokenStore from "../../nonview/core/LocalTokenStore";
 
 import TokenView from "../../view/molecules/TokenView";
-import AbstractInnerPage from "../../view/pages/AbstractInnerPage";
+
+import AbstractInnerPage from "../../view/pages/AbstractInnerPage"
+import QrCode2Icon from '@mui/icons-material/QrCode2';
 
 export default class ViewTokenPage extends AbstractInnerPage {
+  get page() {
+    return "viewToken";
+  }
+  get label() {
+    return "Token";
+  }
+
+  get Icon() {
+    return QrCode2Icon;
+  }
+  get showInOnlyAdminMode() {
+    return false;
+  }
+
+
   render() {
     const url = URLContext.getURL();
     let tokenInfo = LocalTokenStore.getTokenInfoFromURL(url);

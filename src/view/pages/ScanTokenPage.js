@@ -7,6 +7,7 @@ import { t } from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
 
 import AbstractInnerPage from "../../view/pages/AbstractInnerPage";
+import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
 
 const STYLE_QR_READER = {
   width: "100%",
@@ -18,6 +19,20 @@ const STYLE_QR_READER_CONTAINER = {
 };
 
 export default class ScanToken extends AbstractInnerPage {
+  get page() {
+    return "scanToken";
+  }
+  get label() {
+    return "Scan Token";
+  }
+
+  get Icon() {
+    return QrCodeScannerIcon;
+  }
+  get showInOnlyAdminMode() {
+    return false;
+  }
+
   onResult(result, error) {
     if (result && result.text) {
       const url = result.text;

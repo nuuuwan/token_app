@@ -7,19 +7,9 @@ import URLContext from "../../nonview/base/URLContext";
 
 import CustomAppBar from "../../view/molecules/CustomAppBar";
 import HomePageBottomNavigation from "../../view/molecules/HomePageBottomNavigation";
-import CreateTokenPage from "../../view/pages/CreateTokenPage";
-import CryptoKeysPage from "../../view/pages/CryptoKeysPage";
-import ScanTokenPage from "../../view/pages/ScanTokenPage";
-import TokenListPage from "../../view/pages/TokenListPage";
-import ViewTokenPage from "../../view/pages/ViewTokenPage";
 
-const PAGE_CONFIG_LIST = [
-  { Page: CryptoKeysPage, page: "cryptoKeys", title: "Crypto Keys" },
-  { Page: CreateTokenPage, page: "createToken", title: "Create Token" },
-  { Page: ViewTokenPage, page: "viewToken", title: "Token" },
-  { Page: ScanTokenPage, page: "scanToken", title: "Scan Token" },
-  { Page: TokenListPage, page: "tokenList", title: "My Tokens" },
-];
+import PAGE_CONFIG_LIST from "../../view/pages/PAGE_CONFIG_LIST";
+console.debug(PAGE_CONFIG_LIST);
 const DEFAULT_PAGE_CONFIG = PAGE_CONFIG_LIST[4];
 
 const STYLE_INNER_PAGE_BOX = {

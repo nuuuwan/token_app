@@ -13,6 +13,7 @@ import InputCryptoKey from "../../view/molecules/InputCryptoKey";
 import TrustedSourceView from "../../view/molecules/TrustedSourceView";
 import AbstractInnerPage from "../../view/pages/AbstractInnerPage";
 
+import KeyIcon from "@mui/icons-material/Key";
 export default class CryptoKeysPage extends AbstractInnerPage {
   constructor(props) {
     super(props);
@@ -20,6 +21,17 @@ export default class CryptoKeysPage extends AbstractInnerPage {
       keyPair: Crypto.getKeyPairFromLocalStorage(),
     };
   }
+
+  get page() {
+    return "cryptoKeys";
+  }
+  get label() {
+    return "Crypto Keys";
+  }
+  get Icon() {
+    return KeyIcon;
+  }
+
 
   onClickGenerate() {
     const keyPair = Crypto.getKeyPair();
@@ -88,6 +100,7 @@ export default class CryptoKeysPage extends AbstractInnerPage {
           onClick={this.onClickGenerate.bind(this)}
           variant="contained"
           startIcon={<AutorenewIcon />}
+          sx={{backgroundColor: this.color}}
         >
           {t("Generate New Crypto Keys")}
         </Button>
@@ -97,6 +110,7 @@ export default class CryptoKeysPage extends AbstractInnerPage {
           variant="contained"
           startIcon={<SaveIcon />}
           disabled={!areKeyPairsValid || isBrowserKeyPair}
+          sx={{backgroundColor: this.color}}
         >
           {t("Save to Browser")}
         </Button>

@@ -1,8 +1,8 @@
 import Alert from "@mui/material/Alert";
-import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
+import AlignRight from "../../view/atoms/AlignRight"
 
 import Crypto from "../../nonview/base/Crypto";
 import { t } from "../../nonview/base/I18N";
@@ -15,6 +15,7 @@ import InputVehicleNumber from "../../view/molecules/InputVehicleNumber";
 import PageLink from "../../view/molecules/PageLink";
 import AbstractInnerPage from "../../view/pages/AbstractInnerPage";
 
+
 export default class CreateTokenPage extends AbstractInnerPage {
   constructor(props) {
     super(props);
@@ -23,6 +24,17 @@ export default class CreateTokenPage extends AbstractInnerPage {
       priority: "",
     };
   }
+
+  get page() {
+    return "createToken";
+  }
+  get label() {
+    return "Create Token";
+  }
+  get Icon() {
+    return NoteAddIcon;
+  }
+
 
   onClickCreateToken() {
     const { vehicleNumber, priority } = this.state;
@@ -58,7 +70,6 @@ export default class CreateTokenPage extends AbstractInnerPage {
           <PageLink
             page={"cryptoKeys"}
             onClickOpenPage={this.props.onClickOpenPage}
-            label={t("Create Crypto Keys")}
           />
         </Alert>
       );
@@ -69,7 +80,7 @@ export default class CreateTokenPage extends AbstractInnerPage {
       Validate.vehicleNumber(vehicleNumber) && Validate.priority(priority);
 
     return (
-      <Box>
+      <Stack spacing={1}>
         <InputVehicleNumber
           selectedVehicleNumber={vehicleNumber}
           onChangeVehicleNumber={this.onChangeVehicleNumber.bind(this)}
@@ -78,15 +89,18 @@ export default class CreateTokenPage extends AbstractInnerPage {
           selectedPriority={priority}
           onChangePriority={this.onChangePriority.bind(this)}
         />
-        <Button
-          onClick={this.onClickCreateToken.bind(this)}
-          variant="contained"
-          startIcon={<NoteAddIcon />}
-          disabled={!areAllValid}
-        >
-          {t("Create Token")}
-        </Button>
-      </Box>
+        <AlignRight>
+          <Button
+            onClick={this.onClickCreateToken.bind(this)}
+            variant="contained"
+            startIcon={<NoteAddIcon />}
+            disabled={!areAllValid}
+            sx={{backgroundColor: this.color}}
+          >
+            {t("Create Token")}
+          </Button>
+        </AlignRight>
+      </Stack>
     );
   }
 
