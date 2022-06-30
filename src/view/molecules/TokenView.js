@@ -1,14 +1,15 @@
 import QRCode from "react-qr-code";
-import Card from "@mui/material/Card";
+
 import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
 import TimeX from "../../nonview/base/TimeX";
 
+import IconText from "../../view/molecules/IconText";
 import LabelledText from "../../view/molecules/LabelledText";
 import TrustedSourceView from "../../view/molecules/TrustedSourceView";
-import IconText from "../../view/molecules/IconText";
 
 export default function TokenView({ tokenInfo, short }) {
   const { payload, publicKey, url } = tokenInfo;

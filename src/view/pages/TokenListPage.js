@@ -3,9 +3,10 @@ import { Component } from "react";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import TokenView from "../../view/molecules/TokenView";
 
 import LocalTokenStore from "../../nonview/core/LocalTokenStore";
+
+import TokenView from "../../view/molecules/TokenView";
 
 export default class TokenListPage extends Component {
   renderTokenList() {
