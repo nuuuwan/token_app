@@ -1,6 +1,8 @@
 import DICTIONARY from "../../nonview/base/DICTIONARY";
 import IDX from "../../nonview/base/IDX";
 
+import SriLankaColors from "../../view/_constants/SriLankaColors";
+
 export const BASE_LANG = "en";
 const CACHE_KEY_LANG = "CACHE_KEY_LANG";
 const REPLACE_WILDCARD = "000";
@@ -16,9 +18,9 @@ class Lang {
 }
 
 export const LANG_LIST = [
-  new Lang("en", "English", "English", "En", "#080"),
-  new Lang("ta", "தமிழ்", "Tamil", "த", "#f80"),
-  new Lang("si", "සිංහල", "Sinhala", "සිං", "#800"),
+  new Lang("en", "English", "English", "En", SriLankaColors.Muslim),
+  new Lang("ta", "தமிழ்", "Tamil", "த", SriLankaColors.Tamil),
+  new Lang("si", "සිංහල", "Sinhala", "සිං", SriLankaColors.Sinhala),
 ];
 
 export const LANG_IDX = IDX.build(

@@ -8,10 +8,11 @@ import KeyIcon from "@mui/icons-material/Key";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
 import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
 import ViewListIcon from "@mui/icons-material/ViewList";
-import AppColors from "../../view/_constants/AppColors";
 
 import { t } from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
+
+import AppColors from "../../view/_constants/AppColors";
 
 const CONFIG_LIST = [
   {

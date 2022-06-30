@@ -1,8 +1,10 @@
 import { Component } from "react";
 import { QrReader } from "react-qr-reader";
 
+import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 
+import { t } from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
 
 const STYLE_QR_READER = {
@@ -35,6 +37,11 @@ export default class ScanToken extends Component {
           style={STYLE_QR_READER}
           containerStyle={STYLE_QR_READER_CONTAINER}
         />
+        <Alert severity="info">
+          {t(
+            "Scan the QR Code. You could also scan the code with any QR Code app."
+          )}
+        </Alert>
       </Stack>
     );
   }

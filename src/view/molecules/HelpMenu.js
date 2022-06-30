@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
@@ -14,10 +15,11 @@ import GoogleIcon from "@mui/icons-material/Google";
 import LanguageIcon from "@mui/icons-material/Language";
 import SettingsIcon from "@mui/icons-material/Settings";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
-import AppColors from "../../view/_constants/AppColors";
 
 import I18N, { t, LANG_LIST } from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
+
+import AppColors from "../../view/_constants/AppColors";
 
 const URL_GOOGLE_DOC_HELP =
   "https://docs.google.com/document" +
@@ -82,7 +84,7 @@ export default function HelpMenu() {
   return (
     <div>
       <IconButton onClick={onClick}>
-        <SettingsIcon sx={{ color: "lightgray" }} />
+        <SettingsIcon sx={{ color: "primary" }} />
       </IconButton>
       <Menu
         id="basic-menu"
@@ -117,23 +119,7 @@ export default function HelpMenu() {
             </MenuItem>
           );
         })}
-        {MENU_ITEM_LIST.map(function (menuItem, i) {
-          const key = "app-bar-menu-item-" + i;
-          const Icon = menuItem.Icon;
-          const onClick = function (e) {
-            window.open(menuItem.url, "_blank");
-            onClose();
-          };
-
-          return (
-            <MenuItem key={key} onClick={onClick}>
-              <ListItemIcon>
-                <Icon />
-              </ListItemIcon>
-              <ListItemText>{t(menuItem.name)}</ListItemText>
-            </MenuItem>
-          );
-        })}
+        <Divider />
         {isAdminMode ? (
           <MenuItem onClick={onClickUserMode}>
             <ListItemIcon>
@@ -153,6 +139,25 @@ export default function HelpMenu() {
             </ListItemText>
           </MenuItem>
         )}
+        <Divider />
+        {MENU_ITEM_LIST.map(function (menuItem, i) {
+          const key = "app-bar-menu-item-" + i;
+          const Icon = menuItem.Icon;
+          const onClick = function (e) {
+            window.open(menuItem.url, "_blank");
+            onClose();
+          };
+
+          return (
+            <MenuItem key={key} onClick={onClick}>
+              <ListItemIcon>
+                <Icon />
+              </ListItemIcon>
+              <ListItemText>{t(menuItem.name)}</ListItemText>
+            </MenuItem>
+          );
+        })}
+        <Divider />
         <MenuItem onClick={onClickCopy}>
           <ListItemIcon>
             <ContentCopyIcon />

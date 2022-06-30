@@ -6,9 +6,9 @@ import Stack from "@mui/material/Stack";
 
 import TimeX from "../../nonview/base/TimeX";
 
+import AppColors from "../../view/_constants/AppColors";
 import LabelledText from "../../view/molecules/LabelledText";
 import TrustedSourceView from "../../view/molecules/TrustedSourceView";
-import AppColors from "../../view/_constants/AppColors";
 
 export default function TokenView({ tokenInfo, short }) {
   const { payload, publicKey, url } = tokenInfo;

@@ -3,12 +3,13 @@ import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-
-import HelpMenu from "./HelpMenu.js";
 import Typography from "@mui/material/Typography";
+
 import { t } from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
+
 import AppColors from "../../view/_constants/AppColors";
+import HelpMenu from "./HelpMenu.js";
 
 const STYLE = {
   position: "fixed",
