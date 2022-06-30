@@ -1,9 +1,9 @@
 import { Component } from "react";
 
 import Alert from "@mui/material/Alert";
-import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import TokenView from "../../view/molecules/TokenView";
 
 import LocalTokenStore from "../../nonview/core/LocalTokenStore";
 
@@ -20,15 +20,7 @@ export default class TokenListPage extends Component {
     }
 
     return tokenInfoList.map(function (tokenInfo, iToken) {
-      const onClick = function () {
-        window.history.pushState("", "", tokenInfo.url);
-        window.location.reload(true);
-      };
-      return (
-        <Paper key={"token-" + iToken} sx={{ m: 1, p: 1 }}>
-          <Typography onClick={onClick}>{JSON.stringify(tokenInfo)}</Typography>
-        </Paper>
-      );
+      return <TokenView key={"token-" + iToken} tokenInfo={tokenInfo} short />;
     });
   }
   render() {
