@@ -9,9 +9,9 @@ import LocalTokenStore from "../../nonview/core/LocalTokenStore";
 
 export default class TokenListPage extends Component {
   renderTokenList() {
-    const tokenUrlList = LocalTokenStore.getTokenUrlList();
+    const tokenInfoList = LocalTokenStore.getTokenInfoList();
 
-    if (!tokenUrlList || tokenUrlList.length === 0) {
+    if (!tokenInfoList || tokenInfoList.length === 0) {
       return (
         <Alert severity="warning">
           You have no tokens stored on this device.
@@ -19,16 +19,14 @@ export default class TokenListPage extends Component {
       );
     }
 
-    return tokenUrlList.map(function (tokenUrl, iToken) {
+    return tokenInfoList.map(function (tokenInfo, iToken) {
       const onClick = function () {
-        window.history.pushState("", "", tokenUrl);
+        window.history.pushState("", "", tokenInfo.url);
         window.location.reload(true);
       };
       return (
         <Paper key={"token-" + iToken} sx={{ m: 1, p: 1 }}>
-          <Typography href={tokenUrl} onClick={onClick}>
-            Token + {iToken}
-          </Typography>
+          <Typography onClick={onClick}>{JSON.stringify(tokenInfo)}</Typography>
         </Paper>
       );
     });
