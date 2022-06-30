@@ -2,9 +2,7 @@ import { Component } from "react";
 import { QrReader } from "react-qr-reader";
 
 import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
 
-import { t } from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
 
 const STYLE_QR_READER = {
@@ -32,7 +30,6 @@ export default class ScanToken extends Component {
   render() {
     return (
       <Stack spacing={1} sx={{ m: 1, p: 1 }}>
-        <Typography variant="h4">{t("Scan Token")}</Typography>
         <QrReader
           onResult={this.onResult.bind(this)}
           style={STYLE_QR_READER}

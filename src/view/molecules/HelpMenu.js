@@ -136,9 +136,9 @@ export default function HelpMenu() {
         {isAdminMode ? (
           <MenuItem onClick={onClickUserMode}>
             <ListItemIcon>
-              <SupervisorAccountIcon sx={{ color: "lightblue" }} />
+              <SupervisorAccountIcon sx={{ color: "maroon" }} />
             </ListItemIcon>
-            <ListItemText sx={{ color: "lightblue" }}>
+            <ListItemText sx={{ color: "maroon" }}>
               {t("User Mode")}
             </ListItemText>
           </MenuItem>

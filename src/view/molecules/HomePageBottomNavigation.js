@@ -54,11 +54,11 @@ export default function HomePageBottomNavigation({ onClickOpenPage }) {
           if (config.showInOnlyAdminMode && !isAdminMode) {
             return null;
           }
+          const color = config.showInOnlyAdminMode ? "darkblue" : "maroon";
           return (
-            <Tooltip title={t(config.label)}>
+            <Tooltip key={key} title={t(config.label)}>
               <BottomNavigationAction
-                key={key}
-                icon={<config.Icon />}
+                icon={<config.Icon sx={{ color }} />}
                 onClick={() => onClickOpenPage(config.page)}
               />
             </Tooltip>

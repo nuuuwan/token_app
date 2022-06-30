@@ -4,7 +4,6 @@ import Alert from "@mui/material/Alert";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
 
 import Crypto from "../../nonview/base/Crypto";
@@ -100,7 +99,6 @@ export default class CreateTokenPage extends Component {
   render() {
     return (
       <Stack spacing={1} sx={{ m: 1, p: 1 }}>
-        <Typography variant="h4">{t("Create Token")}</Typography>
         {this.renderInner()}
       </Stack>
     );

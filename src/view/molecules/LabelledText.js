@@ -7,11 +7,11 @@ import DirectionsCarFilledIcon from "@mui/icons-material/DirectionsCarFilled";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import LowPriorityIcon from "@mui/icons-material/LowPriority";
 import MoreTimeIcon from "@mui/icons-material/MoreTime";
-import IconLabel from "../../view/molecules/IconLabel";
 
 import { t } from "../../nonview/base/I18N";
 
 import AlignCenter from "../../view/atoms/AlignCenter";
+import IconLabel from "../../view/molecules/IconLabel";
 
 const DEFAULT_ICON = CircleIcon;
 const LABEL_TO_ICON = {

@@ -3,7 +3,6 @@ import QRCode from "react-qr-code";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
 
 import TimeX from "../../nonview/base/TimeX";
 
@@ -50,7 +49,6 @@ export default function TokenView({ tokenInfo, short }) {
   } else {
     return (
       <Stack spacing={1} sx={{ m: 1, p: 3 }}>
-        <Typography variant="h4">Token</Typography>
         <QRCode value={url} fgColor="maroon" />
         <Box>
           <LabelledText label="Vehicle Number" text={payload.vehicleNumber} />

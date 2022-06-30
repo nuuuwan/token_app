@@ -13,6 +13,19 @@ import ScanTokenPage from "../../view/pages/ScanTokenPage";
 import TokenListPage from "../../view/pages/TokenListPage";
 import ViewTokenPage from "../../view/pages/ViewTokenPage";
 
+const PAGE_CONFIG_LIST = [
+  { Page: CryptoKeysPage, page: "cryptoKeys", title: "Crypto Keys" },
+  { Page: CreateTokenPage, page: "createToken", title: "Create Token" },
+  { Page: ViewTokenPage, page: "viewToken", title: "Token" },
+  { Page: ScanTokenPage, page: "scanToken", title: "Scan Token" },
+  { Page: TokenListPage, page: "tokenList", title: "My Tokens" },
+];
+const DEFAULT_PAGE_CONFIG = PAGE_CONFIG_LIST[4];
+
+const STYLE_INNER_PAGE_BOX = {
+  marginTop: 10,
+};
+
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
@@ -68,32 +81,29 @@ export default class HomePage extends Component {
     this.setContext(context);
   }
 
-  renderInnerPage() {
+  getInnerPageConfig() {
     const { context } = this.state;
-    switch (context.page) {
-      case "cryptoKeys":
-        return <CryptoKeysPage />;
-      case "createToken":
-        return <CreateTokenPage />;
-      case "viewToken":
-        return <ViewTokenPage />;
 
-      case "scanToken":
-        return <ScanTokenPage />;
-      case "tokenList":
-        return <TokenListPage />;
-      default:
-        return <TokenListPage />;
+    for (let config of PAGE_CONFIG_LIST) {
+      if (config.page === context.page) {
+        return config;
+      }
     }
+
+    return DEFAULT_PAGE_CONFIG;
   }
 
   render() {
     const { context } = this.state;
     const key = JSON.stringify(context);
+    const innerPageConfig = this.getInnerPageConfig();
+
     return (
       <Box key={key}>
-        <CustomAppBar />
-        {this.renderInnerPage()}
+        <CustomAppBar title={innerPageConfig.title} />
+        <Box sx={STYLE_INNER_PAGE_BOX}>
+          <innerPageConfig.Page />
+        </Box>
         <HomePageBottomNavigation
           onClickOpenPage={this.onClickOpenPage.bind(this)}
         />

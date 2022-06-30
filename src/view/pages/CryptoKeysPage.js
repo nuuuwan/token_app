@@ -3,7 +3,6 @@ import { Component } from "react";
 import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 import SaveIcon from "@mui/icons-material/Save";
 
@@ -68,7 +67,6 @@ export default class CryptoKeysPage extends Component {
       Validate.cryptoKey(keyPair.secretKey);
     return (
       <Stack spacing={1} sx={{ m: 1, p: 1 }}>
-        <Typography variant="h4">{t("Crypto Keys")}</Typography>
         <Condition condition={isBrowserKeyPair}>
           <Alert severity="info">
             {t("These Keys are saved on your Browser")}
