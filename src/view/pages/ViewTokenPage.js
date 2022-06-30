@@ -10,12 +10,18 @@ import TokenView from "../../view/molecules/TokenView";
 
 export default class ViewTokenPage extends Component {
   render() {
-    const context = URLContext.getContext();
-    const { token } = context;
-    const { publicKey, payload } = Crypto.decryptToken(token);
     const url = URLContext.getURL();
-    const tokenInfo = { publicKey, payload, url };
-    LocalTokenStore.addTokenInfo(tokenInfo);
+    let tokenInfo = LocalTokenStore.getTokenInfoFromURL(url);
+
+    if (!tokenInfo) {
+      console.debug(`${url} not found in LocalTokenStore.`);
+      const context = URLContext.getContext();
+      const { token } = context;
+      const { publicKey, payload } = Crypto.decryptToken(token);
+
+      tokenInfo = { publicKey, payload, url };
+      LocalTokenStore.addTokenInfo(tokenInfo);
+    }
 
     return (
       <Box>
