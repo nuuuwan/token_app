@@ -4,9 +4,8 @@ import { QrReader } from "react-qr-reader";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
-import URLContext from "../../nonview/base/URLContext";
-
 import { t } from "../../nonview/base/I18N";
+import URLContext from "../../nonview/base/URLContext";
 
 const STYLE_QR_READER = {
   width: "100%",

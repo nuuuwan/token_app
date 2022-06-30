@@ -1,11 +1,10 @@
 import Alert from "@mui/material/Alert";
 import Box from "@mui/material/Box";
 
+import { t } from "../../nonview/base/I18N";
 import Validate from "../../nonview/core/Validate";
 
 import LabelledTextInput from "../../view/molecules/LabelledTextInput";
-
-import { t } from "../../nonview/base/I18N";
 
 export default function InputVehicleNumber({
   selectedVehicleNumber,

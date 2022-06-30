@@ -37,7 +37,7 @@ export default function TokenView({ tokenInfo, short }) {
             />
             <LabelledText label="Priority" text={payload.priority} noLabel />
             <LabelledText
-              label="Time Expiry"
+              label="Expiration"
               text={TimeX.formatTime(payload.timeExpiryUT)}
               color={color}
               noLabel
@@ -56,13 +56,13 @@ export default function TokenView({ tokenInfo, short }) {
           <LabelledText label="Vehicle Number" text={payload.vehicleNumber} />
           <LabelledText label="Priority" text={payload.priority} />
           <LabelledText
-            label="Time Expiry"
+            label="Expiration"
             text={TimeX.formatTime(payload.timeExpiryUT)}
             color={color}
           />
 
           <LabelledText
-            label="Time Created"
+            label="Creation"
             text={TimeX.formatTime(payload.timeCreatedUT)}
           />
           <LabelledText label="Public Key" text={publicKey} />

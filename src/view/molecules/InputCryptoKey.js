@@ -5,11 +5,11 @@ import LockIcon from "@mui/icons-material/Lock";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 
 import { CRYPTO_KEY_TYPE } from "../../nonview/base/Crypto";
+import { t } from "../../nonview/base/I18N";
 import Validate from "../../nonview/core/Validate";
 
 import AlignCenter from "../../view/atoms/AlignCenter";
 import LabelledTextInput from "../../view/molecules/LabelledTextInput";
-import { t } from "../../nonview/base/I18N";
 
 const PUBLIC_MESSAGE = [
   "This is your Public Key.",

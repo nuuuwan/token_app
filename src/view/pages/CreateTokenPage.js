@@ -8,13 +8,13 @@ import Typography from "@mui/material/Typography";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
 
 import Crypto from "../../nonview/base/Crypto";
+import { t } from "../../nonview/base/I18N";
 import TimeX, { SECONDS_IN } from "../../nonview/base/TimeX";
 import URLContext from "../../nonview/base/URLContext";
 import Validate from "../../nonview/core/Validate";
 
 import InputPriority from "../../view/molecules/InputPriority";
 import InputVehicleNumber from "../../view/molecules/InputVehicleNumber";
-import { t } from "../../nonview/base/I18N";
 
 export default class CreateTokenPage extends Component {
   constructor(props) {

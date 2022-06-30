@@ -4,11 +4,10 @@ import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
+import { t } from "../../nonview/base/I18N";
 import LocalTokenStore from "../../nonview/core/LocalTokenStore";
 
 import TokenView from "../../view/molecules/TokenView";
-
-import { t } from "../../nonview/base/I18N";
 
 export default class TokenListPage extends Component {
   renderTokenList() {

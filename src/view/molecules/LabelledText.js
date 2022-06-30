@@ -8,15 +8,16 @@ import LockOpenIcon from "@mui/icons-material/LockOpen";
 import LowPriorityIcon from "@mui/icons-material/LowPriority";
 import MoreTimeIcon from "@mui/icons-material/MoreTime";
 
-import AlignCenter from "../../view/atoms/AlignCenter";
 import { t } from "../../nonview/base/I18N";
+
+import AlignCenter from "../../view/atoms/AlignCenter";
 
 const DEFAULT_ICON = CircleIcon;
 const LABEL_TO_ICON = {
   "Vehicle Number": DirectionsCarFilledIcon,
   Priority: LowPriorityIcon,
-  "Time Expiry": AccessTimeIcon,
-  "Time Created": MoreTimeIcon,
+  Expiration: AccessTimeIcon,
+  Creation: MoreTimeIcon,
   "Public Key": LockOpenIcon,
 };
 
