@@ -53,7 +53,7 @@ export default class CreateTokenPage extends Component {
       Validate.vehicleNumber(vehicleNumber) && Validate.priority(priority);
 
     return (
-      <Stack spacing={1} sx={{ m: 1, p: 3 }}>
+      <Stack spacing={1} sx={{ m: 1, p: 1 }}>
         <Typography variant="h4">Create Token</Typography>
         <InputVehicleNumber
           selectedVehicleNumber={vehicleNumber}
