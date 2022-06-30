@@ -19,12 +19,20 @@ export default function InputPriority({ selectedPriority, onChangePriority }) {
       "A valid priority value must be an number between 1 and 10,000.";
   }
 
+  const onChangeInner = function (newPriority) {
+    newPriority = parseInt(newPriority);
+    if (!Validate.isInteger(newPriority)) {
+      newPriority = "";
+    }
+    onChangePriority(newPriority);
+  };
+
   return (
     <Box>
       <LabelledTextInput
         label="Priority"
         text={selectedPriority}
-        onChange={onChangePriority}
+        onChange={onChangeInner}
       />
       <Alert severity={severity}>{alertText}</Alert>
     </Box>
