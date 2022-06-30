@@ -1,0 +1,29 @@
+A priority value is required to generate a token.
+A valid vehicle number is required to generate a token.
+A valid vehicle number should have the format AB-1234 or ABC-1234
+Admin Mode
+Clear Local Cache
+Code Repository
+Copy App Link
+Create Token
+Crypto Keys
+Generate New Crypto Keys
+Help (Google Doc)
+Looks good!
+Looks good! This is your Public Key. Other people will use this key to verify tokens issued by you. Please share this key in a public place.
+Looks good! This is your Secret Key. You will use this key to generate tokens. Please DO NOT SHARE this key with anyone. Copy this key and save it in a SAFE PLACE.
+My Tokens
+Priority
+Public Key
+Report Bugs
+Save to Browser
+Scan Token
+Secret Key
+These Keys are saved on your Browser
+Time Created
+Time Expiry
+Token
+Untrusted Source
+User Mode
+Vehicle Number
+You can either generate new crypto keys, or input previously generated and saved crypto keys.

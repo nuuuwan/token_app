@@ -6,6 +6,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 import SaveIcon from "@mui/icons-material/Save";
+import { t } from "../../nonview/base/I18N";
 
 import Crypto, { CRYPTO_KEY_TYPE } from "../../nonview/base/Crypto";
 import Validate from "../../nonview/core/Validate";
@@ -67,9 +68,11 @@ export default class CryptoKeysPage extends Component {
       Validate.cryptoKey(keyPair.secretKey);
     return (
       <Stack spacing={1} sx={{ m: 1, p: 1 }}>
-        <Typography variant="h4">Crypto Keys</Typography>
+        <Typography variant="h4">{t("Crypto Keys")}</Typography>
         <Condition condition={isBrowserKeyPair}>
-          <Alert severity="info">These Keys are saved on your Browser</Alert>
+          <Alert severity="info">
+            {t("These Keys are saved on your Browser")}
+          </Alert>
         </Condition>
 
         <InputCryptoKey
@@ -89,7 +92,7 @@ export default class CryptoKeysPage extends Component {
           variant="contained"
           startIcon={<AutorenewIcon />}
         >
-          Generate New Crypto Keys
+          {t("Generate New Crypto Keys")}
         </Button>
 
         <Button
@@ -98,12 +101,13 @@ export default class CryptoKeysPage extends Component {
           startIcon={<SaveIcon />}
           disabled={!areKeyPairsValid || isBrowserKeyPair}
         >
-          Save to Browser
+          {t("Save to Browser")}
         </Button>
 
         <Alert severity="info">
-          You can either generate new crypto keys, or input previously generated
-          and saved crypto keys.
+          {t(
+            "You can either generate new crypto keys, or input previously generated and saved crypto keys."
+          )}
         </Alert>
       </Stack>
     );

@@ -5,7 +5,7 @@
 # MEDIUM
 
 * Translations
-* Split out Admin Mode* 
+* Add icons to text input
 
 # HIGH
 

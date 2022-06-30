@@ -8,6 +8,8 @@ import LocalTokenStore from "../../nonview/core/LocalTokenStore";
 
 import TokenView from "../../view/molecules/TokenView";
 
+import { t } from "../../nonview/base/I18N";
+
 export default class TokenListPage extends Component {
   renderTokenList() {
     const tokenInfoList = LocalTokenStore.getTokenInfoList();
@@ -27,7 +29,7 @@ export default class TokenListPage extends Component {
   render() {
     return (
       <Stack spacing={1} sx={{ m: 1, p: 1 }}>
-        <Typography variant="h4">My Tokens</Typography>
+        <Typography variant="h4">{t("My Tokens")}</Typography>
         {this.renderTokenList()}
       </Stack>
     );

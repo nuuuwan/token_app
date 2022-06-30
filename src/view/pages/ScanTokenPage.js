@@ -6,6 +6,8 @@ import Typography from "@mui/material/Typography";
 
 import URLContext from "../../nonview/base/URLContext";
 
+import { t } from "../../nonview/base/I18N";
+
 const STYLE_QR_READER = {
   width: "100%",
 };
@@ -31,7 +33,7 @@ export default class ScanToken extends Component {
   render() {
     return (
       <Stack spacing={1} sx={{ m: 1, p: 1 }}>
-        <Typography variant="h4">Scan Token</Typography>
+        <Typography variant="h4">{t("Scan Token")}</Typography>
         <QrReader
           onResult={this.onResult.bind(this)}
           style={STYLE_QR_READER}

@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Validate from "../../nonview/core/Validate";
 
 import LabelledTextInput from "../../view/molecules/LabelledTextInput";
+import { t } from "../../nonview/base/I18N";
 
 export default function InputPriority({ selectedPriority, onChangePriority }) {
   let severity, alertText;
@@ -34,7 +35,7 @@ export default function InputPriority({ selectedPriority, onChangePriority }) {
         text={selectedPriority}
         onChange={onChangeInner}
       />
-      <Alert severity={severity}>{alertText}</Alert>
+      <Alert severity={severity}>{t(alertText)}</Alert>
     </Box>
   );
 }

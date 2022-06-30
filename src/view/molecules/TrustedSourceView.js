@@ -1,6 +1,7 @@
 import Alert from "@mui/material/Alert";
 
 import TrustedSource from "../../nonview/core/TrustedSource";
+import { t } from "../../nonview/base/I18N";
 
 export default function TrustedSourceView({ publicKey }) {
   if (!publicKey) {
@@ -22,5 +23,5 @@ export default function TrustedSourceView({ publicKey }) {
     message = "Untrusted Source";
   }
 
-  return <Alert severity={severity}>{message}</Alert>;
+  return <Alert severity={severity}>{t(message)}</Alert>;
 }

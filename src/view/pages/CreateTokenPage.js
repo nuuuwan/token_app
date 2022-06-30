@@ -14,6 +14,7 @@ import Validate from "../../nonview/core/Validate";
 
 import InputPriority from "../../view/molecules/InputPriority";
 import InputVehicleNumber from "../../view/molecules/InputVehicleNumber";
+import { t } from "../../nonview/base/I18N";
 
 export default class CreateTokenPage extends Component {
   constructor(props) {
@@ -65,7 +66,7 @@ export default class CreateTokenPage extends Component {
           onClick={this.gotoCryptoKeys}
           sx={{ cursor: "pointer" }}
         >
-          You need Crypto Keys to genenerate a token.
+          {t("You need Crypto Keys to genenerate a token.")}
         </Alert>
       );
     }
@@ -90,7 +91,7 @@ export default class CreateTokenPage extends Component {
           startIcon={<NoteAddIcon />}
           disabled={!areAllValid}
         >
-          Create Token
+          {t("Create Token")}
         </Button>
       </Box>
     );
@@ -99,7 +100,7 @@ export default class CreateTokenPage extends Component {
   render() {
     return (
       <Stack spacing={1} sx={{ m: 1, p: 1 }}>
-        <Typography variant="h4">Create Token</Typography>
+        <Typography variant="h4">{t("Create Token")}</Typography>
         {this.renderInner()}
       </Stack>
     );

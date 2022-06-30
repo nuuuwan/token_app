@@ -9,6 +9,7 @@ import LowPriorityIcon from "@mui/icons-material/LowPriority";
 import MoreTimeIcon from "@mui/icons-material/MoreTime";
 
 import AlignCenter from "../../view/atoms/AlignCenter";
+import { t } from "../../nonview/base/I18N";
 
 const DEFAULT_ICON = CircleIcon;
 const LABEL_TO_ICON = {
@@ -27,7 +28,7 @@ export default function LabelledText({ label, text, color, noLabel }) {
   if (noLabel) {
     return (
       <AlignCenter>
-        <Tooltip title={label}>
+        <Tooltip title={t(label)}>
           <Icon sx={{ opacity: 0.33 }} />
         </Tooltip>
         <Typography variant="h6" sx={{ color, wordWrap: "break-word" }}>
@@ -41,7 +42,7 @@ export default function LabelledText({ label, text, color, noLabel }) {
         <AlignCenter>
           <Icon sx={{ opacity: 0.33 }} />
           <Typography variant="caption" sx={{ opacity: 0.5 }}>
-            {label}
+            {t(label)}
           </Typography>
         </AlignCenter>
 

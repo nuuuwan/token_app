@@ -11,10 +11,11 @@ import BugReportIcon from "@mui/icons-material/BugReport";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import GoogleIcon from "@mui/icons-material/Google";
+import LanguageIcon from "@mui/icons-material/Language";
 import SettingsIcon from "@mui/icons-material/Settings";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 
-import { t } from "../../nonview/base/I18N";
+import I18N, { t, LANG_LIST } from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
 
 const URL_GOOGLE_DOC_HELP =
@@ -91,6 +92,30 @@ export default function HelpMenu() {
           "aria-labelledby": "basic-button",
         }}
       >
+        {LANG_LIST.map(function (lang, iLang) {
+          const currentLang = I18N.getLang();
+          if (currentLang === lang.lang) {
+            return null;
+          }
+
+          const onClick = function () {
+            let context = URLContext.getContext();
+            context.lang = lang.lang;
+            URLContext.setContext(context);
+            window.location.reload(true);
+          };
+
+          return (
+            <MenuItem key={"lang-" + iLang} onClick={onClick}>
+              <ListItemIcon>
+                <LanguageIcon sx={{ color: lang.color }} />
+              </ListItemIcon>
+              <ListItemText sx={{ color: lang.color }}>
+                {lang.label}
+              </ListItemText>
+            </MenuItem>
+          );
+        })}
         {MENU_ITEM_LIST.map(function (menuItem, i) {
           const key = "app-bar-menu-item-" + i;
           const Icon = menuItem.Icon;
@@ -111,16 +136,20 @@ export default function HelpMenu() {
         {isAdminMode ? (
           <MenuItem onClick={onClickUserMode}>
             <ListItemIcon>
-              <SupervisorAccountIcon />
+              <SupervisorAccountIcon sx={{ color: "lightblue" }} />
             </ListItemIcon>
-            <ListItemText>{t("User Mode")}</ListItemText>
+            <ListItemText sx={{ color: "lightblue" }}>
+              {t("User Mode")}
+            </ListItemText>
           </MenuItem>
         ) : (
           <MenuItem onClick={onClickAdminMode}>
             <ListItemIcon>
-              <AdminPanelSettingsIcon />
+              <AdminPanelSettingsIcon sx={{ color: "darkblue" }} />
             </ListItemIcon>
-            <ListItemText>{t("Admin Mode")}</ListItemText>
+            <ListItemText sx={{ color: "darkblue" }}>
+              {t("Admin Mode")}
+            </ListItemText>
           </MenuItem>
         )}
         <MenuItem onClick={onClickCopy}>

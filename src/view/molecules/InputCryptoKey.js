@@ -9,6 +9,7 @@ import Validate from "../../nonview/core/Validate";
 
 import AlignCenter from "../../view/atoms/AlignCenter";
 import LabelledTextInput from "../../view/molecules/LabelledTextInput";
+import { t } from "../../nonview/base/I18N";
 
 const PUBLIC_MESSAGE = [
   "This is your Public Key.",
@@ -64,18 +65,13 @@ export default function InputCryptoKey({
   return (
     <Box>
       <LabelledTextInput
-        label={
-          <AlignCenter>
-            <Icon sx={{ fontSize: "100%" }} />
-            <Typography sx={{ fontSize: "100%" }}>{label + " Key"}</Typography>
-          </AlignCenter>
-        }
+        label={label + " Key"}
         text={selectedCryptoKey.toString()}
         onChange={onChangeCryptoKey}
         multiline
         color={color}
       />
-      <Alert severity={severity}>{alertText}</Alert>
+      <Alert severity={severity}>{t(alertText)}</Alert>
     </Box>
   );
 }
