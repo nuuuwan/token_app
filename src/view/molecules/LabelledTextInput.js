@@ -17,7 +17,11 @@ export default function LabelledTextInput({
       <Typography variant="subtitle1" sx={{ fontSize: "67%", color }}>
         {label}
       </Typography>
-      <TextField value={text} onChange={onChangeInner} multiline />
+      <TextField
+        value={text}
+        onChange={onChangeInner}
+        multiline={Boolean(multiline)}
+      />
     </Box>
   );
 }
