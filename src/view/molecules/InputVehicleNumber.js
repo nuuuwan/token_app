@@ -25,10 +25,6 @@ export default function InputVehicleNumber({
   const onChangeInner = function (newVehicleNumber) {
     newVehicleNumber = newVehicleNumber.toUpperCase();
 
-    const c1 = newVehicleNumber.substring(1, 2);
-    const c2 = newVehicleNumber.substring(2, 3);
-    const c3 = newVehicleNumber.substring(3, 4);
-
     for (let i of [1, 2]) {
       const cLetter = newVehicleNumber.substring(i, i + 1);
       const cInteger = newVehicleNumber.substring(i + 1, i + 2);
