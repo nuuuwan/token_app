@@ -7,15 +7,8 @@ import Validate from "../../nonview/core/Validate";
 import LabelledTextInput from "../../view/molecules/LabelledTextInput";
 
 export default function InputPriority({ selectedPriority, onChangePriority }) {
-  let severity, alertText;
-  if (selectedPriority.toString().trim().length === 0) {
-    severity = "error";
-    alertText = "A priority value is required to generate a token.";
-  } else if (Validate.priority(selectedPriority)) {
-    severity = "success";
-    alertText = "Looks good!";
-  } else {
-    severity = "error";
+  let alertText = undefined;
+  if (selectedPriority && !Validate.priority(selectedPriority)) {
     alertText =
       "A valid priority value must be an number between 1 and 10,000.";
   }
@@ -35,7 +28,7 @@ export default function InputPriority({ selectedPriority, onChangePriority }) {
         text={selectedPriority}
         onChange={onChangeInner}
       />
-      <Alert severity={severity}>{t(alertText)}</Alert>
+      {alertText ? <Alert severity="error">{t(alertText)}</Alert> : null}
     </Box>
   );
 }

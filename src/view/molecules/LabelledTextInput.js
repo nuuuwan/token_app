@@ -20,6 +20,8 @@ export default function LabelledTextInput({
         value={text}
         onChange={onChangeInner}
         multiline={Boolean(multiline)}
+        required
+        sx={{ width: "80%" }}
       />
     </Box>
   );

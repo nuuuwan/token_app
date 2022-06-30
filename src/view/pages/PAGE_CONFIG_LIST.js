@@ -1,4 +1,5 @@
 import IDX from "../../nonview/base/IDX";
+
 import CreateTokenPage from "../../view/pages/CreateTokenPage";
 import CryptoKeysPage from "../../view/pages/CryptoKeysPage";
 import ScanTokenPage from "../../view/pages/ScanTokenPage";

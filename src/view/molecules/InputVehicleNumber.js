@@ -10,15 +10,8 @@ export default function InputVehicleNumber({
   selectedVehicleNumber,
   onChangeVehicleNumber,
 }) {
-  let severity, alertText;
-  if (selectedVehicleNumber.trim().length === 0) {
-    severity = "error";
-    alertText = "A valid vehicle number is required to generate a token.";
-  } else if (Validate.vehicleNumber(selectedVehicleNumber)) {
-    severity = "success";
-    alertText = "Looks good!";
-  } else {
-    severity = "error";
+  let alertText = undefined;
+  if (selectedVehicleNumber && !Validate.vehicleNumber(selectedVehicleNumber)) {
     alertText =
       "A valid vehicle number should have the format AB-1234 or ABC-1234";
   }
@@ -48,7 +41,7 @@ export default function InputVehicleNumber({
         text={selectedVehicleNumber}
         onChange={onChangeInner}
       />
-      <Alert severity={severity}>{t(alertText)}</Alert>
+      {alertText ? <Alert severity="error">{t(alertText)}</Alert> : null}
     </Box>
   );
 }

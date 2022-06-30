@@ -1,13 +1,12 @@
 import Box from "@mui/material/Box";
+import QrCode2Icon from "@mui/icons-material/QrCode2";
 
 import Crypto from "../../nonview/base/Crypto";
 import URLContext from "../../nonview/base/URLContext";
 import LocalTokenStore from "../../nonview/core/LocalTokenStore";
 
 import TokenView from "../../view/molecules/TokenView";
-
 import AbstractInnerPage from "../../view/pages/AbstractInnerPage";
-import QrCode2Icon from "@mui/icons-material/QrCode2";
 
 export default class ViewTokenPage extends AbstractInnerPage {
   get page() {

@@ -7,29 +7,14 @@ import Validate from "../../nonview/core/Validate";
 
 import LabelledTextInput from "../../view/molecules/LabelledTextInput";
 
-const PUBLIC_MESSAGE = [
-  "This is your Public Key.",
-  "Other people will use this key to verify tokens issued by you.",
-  "Please share this key in a public place.",
-].join(" ");
-
-const PRIVATE_MESSAGE = [
-  "This is your Secret Key.",
-  "You will use this key to generate tokens.",
-  "Please DO NOT SHARE this key with anyone.",
-  "Copy this key and save it in a SAFE PLACE.",
-].join(" ");
-
 const cryptoKeyTypeToConfig = {
   [CRYPTO_KEY_TYPE.PUBLIC]: {
     color: "darkgreen",
     label: "Public",
-    message: PUBLIC_MESSAGE,
   },
   [CRYPTO_KEY_TYPE.SECRET]: {
     color: "maroon",
     label: "Secret",
-    message: PRIVATE_MESSAGE,
   },
 };
 
@@ -41,18 +26,11 @@ export default function InputCryptoKey({
   if (!selectedCryptoKey) {
     selectedCryptoKey = "";
   }
-  let severity, alertText;
 
-  const { color, label, message } = cryptoKeyTypeToConfig[cryptoKeyType];
+  const { color, label } = cryptoKeyTypeToConfig[cryptoKeyType];
 
-  if (selectedCryptoKey.toString().trim().length === 0) {
-    severity = "error";
-    alertText = `A ${label} Key is required to generate a token.`;
-  } else if (Validate.cryptoKey(selectedCryptoKey)) {
-    severity = "success";
-    alertText = "Looks good! " + message;
-  } else {
-    severity = "error";
+  let alertText = undefined;
+  if (selectedCryptoKey && !Validate.cryptoKey(selectedCryptoKey)) {
     alertText = "A valid CryptoKey value must be 44 characters long.";
   }
 
@@ -65,7 +43,7 @@ export default function InputCryptoKey({
         multiline
         color={color}
       />
-      <Alert severity={severity}>{t(alertText)}</Alert>
+      {alertText ? <Alert severity="error">{t(alertText)}</Alert> : null}
     </Box>
   );
 }

@@ -2,18 +2,18 @@ import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
+import KeyIcon from "@mui/icons-material/Key";
 import SaveIcon from "@mui/icons-material/Save";
-import AlignRight from "../../view/atoms/AlignRight";
+
 import Crypto, { CRYPTO_KEY_TYPE } from "../../nonview/base/Crypto";
 import { t } from "../../nonview/base/I18N";
 import Validate from "../../nonview/core/Validate";
 
-import Condition from "../../view/atoms/Condition";
+import AlignRight from "../../view/atoms/AlignRight";
 import InputCryptoKey from "../../view/molecules/InputCryptoKey";
 import TrustedSourceView from "../../view/molecules/TrustedSourceView";
 import AbstractInnerPage from "../../view/pages/AbstractInnerPage";
 
-import KeyIcon from "@mui/icons-material/Key";
 export default class CryptoKeysPage extends AbstractInnerPage {
   constructor(props) {
     super(props);
@@ -68,20 +68,26 @@ export default class CryptoKeysPage extends AbstractInnerPage {
     }
 
     const browserKeyPair = Crypto.getKeyPairFromLocalStorage();
-    const isBrowserKeyPair =
-      JSON.stringify(browserKeyPair).localeCompare(JSON.stringify(keyPair)) ===
-      0;
-
     const areKeyPairsValid =
       Validate.cryptoKey(keyPair.publicKey) &&
       Validate.cryptoKey(keyPair.secretKey);
+
+    const isBrowserKeyPair =
+      areKeyPairsValid &&
+      JSON.stringify(browserKeyPair).localeCompare(JSON.stringify(keyPair)) ===
+        0;
+
     return (
       <Stack spacing={1} sx={{ m: 1, p: 1 }}>
-        <Condition condition={isBrowserKeyPair}>
+        {isBrowserKeyPair ? (
           <Alert severity="info">
             {t("These Keys are saved on your Browser")}
           </Alert>
-        </Condition>
+        ) : (
+          <Alert severity="warning">
+            {t("You have no CryptoKeys stored on your Browser.")}
+          </Alert>
+        )}
 
         <AlignRight>
           <Button
@@ -117,12 +123,6 @@ export default class CryptoKeysPage extends AbstractInnerPage {
             {t("Save to Browser")}
           </Button>
         </AlignRight>
-
-        <Alert severity="info">
-          {t(
-            "You can either generate new crypto keys, or input previously generated and saved crypto keys."
-          )}
-        </Alert>
       </Stack>
     );
   }

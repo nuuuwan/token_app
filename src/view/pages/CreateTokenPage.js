@@ -2,7 +2,6 @@ import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
-import AlignRight from "../../view/atoms/AlignRight";
 
 import Crypto from "../../nonview/base/Crypto";
 import { t } from "../../nonview/base/I18N";
@@ -10,6 +9,7 @@ import TimeX, { SECONDS_IN } from "../../nonview/base/TimeX";
 import URLContext from "../../nonview/base/URLContext";
 import Validate from "../../nonview/core/Validate";
 
+import AlignRight from "../../view/atoms/AlignRight";
 import InputPriority from "../../view/molecules/InputPriority";
 import InputVehicleNumber from "../../view/molecules/InputVehicleNumber";
 import PageLink from "../../view/molecules/PageLink";

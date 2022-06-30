@@ -1,13 +1,12 @@
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
+import ViewListIcon from "@mui/icons-material/ViewList";
 
 import LocalTokenStore from "../../nonview/core/LocalTokenStore";
 
+import PageLink from "../../view/molecules/PageLink";
 import TokenView from "../../view/molecules/TokenView";
 import AbstractInnerPage from "../../view/pages/AbstractInnerPage";
-
-import ViewListIcon from "@mui/icons-material/ViewList";
-import PageLink from "../../view/molecules/PageLink";
 
 export default class TokenListPage extends AbstractInnerPage {
   get page() {
