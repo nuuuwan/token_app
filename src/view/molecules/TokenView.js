@@ -12,8 +12,8 @@ import TrustedSourceView from "../../view/molecules/TrustedSourceView";
 
 export default function TokenView({ tokenInfo, short }) {
   let { payload, publicKey, url } = tokenInfo;
-  url = url.replaceAll('mode:issuer', 'mode:receiver')
-  
+  url = url.replaceAll("mode:issuer", "mode:receiver");
+
   const isExpired = payload.timeExpiryUT < TimeX.getUnixTime();
   const color = isExpired ? "red" : "darkgreen";
 

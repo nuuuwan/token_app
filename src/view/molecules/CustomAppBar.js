@@ -4,7 +4,7 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import AlignCenter from "../../view/atoms/AlignCenter"
+import AlignCenter from "../../view/atoms/AlignCenter";
 
 import { t } from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
@@ -27,8 +27,8 @@ export default function CustomAppBar({ title, Icon }) {
       <AppBar sx={{ backgroundColor: color }} elevation={10}>
         <Toolbar>
           <AlignCenter>
-            <Icon sx={{marginRight: 1}} />
-            <Typography variant="h6" component="div" >
+            <Icon sx={{ marginRight: 1 }} />
+            <Typography variant="h6" component="div">
               {t(title)}
             </Typography>
           </AlignCenter>
