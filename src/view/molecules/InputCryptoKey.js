@@ -1,14 +1,10 @@
 import Alert from "@mui/material/Alert";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import LockIcon from "@mui/icons-material/Lock";
-import LockOpenIcon from "@mui/icons-material/LockOpen";
 
 import { CRYPTO_KEY_TYPE } from "../../nonview/base/Crypto";
 import { t } from "../../nonview/base/I18N";
 import Validate from "../../nonview/core/Validate";
 
-import AlignCenter from "../../view/atoms/AlignCenter";
 import LabelledTextInput from "../../view/molecules/LabelledTextInput";
 
 const PUBLIC_MESSAGE = [
@@ -29,13 +25,11 @@ const cryptoKeyTypeToConfig = {
     color: "darkgreen",
     label: "Public",
     message: PUBLIC_MESSAGE,
-    Icon: LockOpenIcon,
   },
   [CRYPTO_KEY_TYPE.SECRET]: {
     color: "maroon",
     label: "Secret",
     message: PRIVATE_MESSAGE,
-    Icon: LockIcon,
   },
 };
 
@@ -49,7 +43,7 @@ export default function InputCryptoKey({
   }
   let severity, alertText;
 
-  const { color, label, message, Icon } = cryptoKeyTypeToConfig[cryptoKeyType];
+  const { color, label, message } = cryptoKeyTypeToConfig[cryptoKeyType];
 
   if (selectedCryptoKey.toString().trim().length === 0) {
     severity = "error";
