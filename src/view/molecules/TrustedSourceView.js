@@ -18,7 +18,7 @@ export default function TrustedSourceView({ publicKey }) {
       </>
     );
   } else {
-    severity = "error";
+    severity = "warning";
     message = "Untrusted Source";
   }
 
