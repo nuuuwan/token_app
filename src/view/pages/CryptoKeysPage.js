@@ -66,7 +66,7 @@ export default class CryptoKeysPage extends Component {
       Validate.cryptoKey(keyPair.publicKey) &&
       Validate.cryptoKey(keyPair.secretKey);
     return (
-      <Stack spacing={1} sx={{ m: 1, p: 3 }}>
+      <Stack spacing={1} sx={{ m: 1, p: 1 }}>
         <Typography variant="h4">Crypto Keys</Typography>
         <Condition condition={isBrowserKeyPair}>
           <Alert severity="info">These Keys are saved on your Browser</Alert>

@@ -26,7 +26,7 @@ export default class TokenListPage extends Component {
   }
   render() {
     return (
-      <Stack spacing={1} sx={{ m: 1, p: 3 }}>
+      <Stack spacing={1} sx={{ m: 1, p: 1 }}>
         <Typography variant="h4">My Tokens</Typography>
         {this.renderTokenList()}
       </Stack>
