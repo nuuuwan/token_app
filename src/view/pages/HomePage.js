@@ -102,7 +102,7 @@ export default class HomePage extends Component {
       <Box key={key}>
         <CustomAppBar title={innerPageConfig.title} />
         <Box sx={STYLE_INNER_PAGE_BOX}>
-          <innerPageConfig.Page />
+          <innerPageConfig.Page onClickOpenPage={this.onClickOpenPage.bind(this)}/>
         </Box>
         <HomePageBottomNavigation
           onClickOpenPage={this.onClickOpenPage.bind(this)}
