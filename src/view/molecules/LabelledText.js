@@ -6,13 +6,17 @@ import CircleIcon from "@mui/icons-material/Circle";
 import DirectionsCarFilledIcon from "@mui/icons-material/DirectionsCarFilled";
 import LowPriorityIcon from "@mui/icons-material/LowPriority";
 
+import MoreTimeIcon from '@mui/icons-material/MoreTime';
 import AlignCenter from "../../view/atoms/AlignCenter";
+import LockOpenIcon from '@mui/icons-material/LockOpen';
 
 const DEFAULT_ICON = CircleIcon;
 const LABEL_TO_ICON = {
   "Vehicle Number": DirectionsCarFilledIcon,
   Priority: LowPriorityIcon,
   "Time Expiry": AccessTimeIcon,
+  "Time Created": MoreTimeIcon,
+  "Public Key": LockOpenIcon,
 };
 
 export default function LabelledText({ label, text, color, noLabel }) {
