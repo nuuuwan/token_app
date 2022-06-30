@@ -1,8 +1,12 @@
-function isLetter(c) {
-  return c.toLowerCase() !== c.toUpperCase();
-}
-
 export default class Validate {
+  static isLetter(x) {
+    return x.toLowerCase() !== x.toUpperCase();
+  }
+
+  static isInteger(x) {
+    return Number.isInteger(parseInt(x));
+  }
+
   static cryptoKey(cryptoKey) {
     if (!cryptoKey) {
       return false;
@@ -11,10 +15,10 @@ export default class Validate {
   }
 
   static priority(priority) {
-    const priorityInt = parseInt(priority);
-    if (!Number.isInteger(priorityInt)) {
+    if (!Validate.isInteger(priority)) {
       return false;
     }
+    const priorityInt = parseInt(priority);
     if (priorityInt < 1 || priorityInt > 10_000) {
       return false;
     }
@@ -30,14 +34,14 @@ export default class Validate {
     if (![2, 3].includes(tokens[0].length)) {
       return false;
     }
-    if (!isLetter(tokens[0])) {
+    if (!Validate.isLetter(tokens[0])) {
       return false;
     }
 
     if (tokens[1].length !== 4) {
       return false;
     }
-    if (!Number.isInteger(parseInt(tokens[1]))) {
+    if (!Validate.isInteger(tokens[1])) {
       return false;
     }
 
