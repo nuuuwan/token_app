@@ -1,7 +1,6 @@
 # LOW
 
 * Save to clipboard
-* Vehicle Number Format
 
 # MEDIUM
 
@@ -11,6 +10,8 @@
 * Prevent create token if no keys
 
 # HIGH
+
+* Fix stickiness/extra load issues (ONGOING)
 
 # BIG PICTURE
 
