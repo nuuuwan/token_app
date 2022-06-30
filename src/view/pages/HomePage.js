@@ -9,7 +9,6 @@ import CustomAppBar from "../../view/molecules/CustomAppBar";
 import HomePageBottomNavigation from "../../view/molecules/HomePageBottomNavigation";
 import PAGE_CONFIG_LIST from "../../view/pages/PAGE_CONFIG_LIST";
 
-console.debug(PAGE_CONFIG_LIST);
 const DEFAULT_PAGE_CONFIG = PAGE_CONFIG_LIST[4];
 
 const STYLE_INNER_PAGE_BOX = {

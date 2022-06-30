@@ -29,7 +29,6 @@ export default class ViewTokenPage extends AbstractInnerPage {
     let tokenInfo = LocalTokenStore.getTokenInfoFromURL(url);
 
     if (!tokenInfo) {
-      console.debug(`${url} not found in LocalTokenStore.`);
       const context = URLContext.getContext();
       const { token } = context;
       const { publicKey, payload } = Crypto.decryptToken(token);
