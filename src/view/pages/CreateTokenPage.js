@@ -1,5 +1,7 @@
 import { Component } from "react";
 
+import Alert from "@mui/material/Alert";
+import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
@@ -47,14 +49,33 @@ export default class CreateTokenPage extends Component {
     this.setState({ priority });
   }
 
-  render() {
+  gotoCryptoKeys() {
+    let context = URLContext.getContext();
+    context.page = "cryptoKeys";
+    URLContext.setContext(context);
+    window.location.reload(true);
+  }
+
+  renderInner() {
+    const keyPair = Crypto.getKeyPairFromLocalStorage();
+    if (!keyPair.secretKey) {
+      return (
+        <Alert
+          severity="error"
+          onClick={this.gotoCryptoKeys}
+          sx={{ cursor: "pointer" }}
+        >
+          You need Crypto Keys to genenerate a token.
+        </Alert>
+      );
+    }
+
     const { vehicleNumber, priority } = this.state;
     const areAllValid =
       Validate.vehicleNumber(vehicleNumber) && Validate.priority(priority);
 
     return (
-      <Stack spacing={1} sx={{ m: 1, p: 1 }}>
-        <Typography variant="h4">Create Token</Typography>
+      <Box>
         <InputVehicleNumber
           selectedVehicleNumber={vehicleNumber}
           onChangeVehicleNumber={this.onChangeVehicleNumber.bind(this)}
@@ -71,6 +92,15 @@ export default class CreateTokenPage extends Component {
         >
           Create Token
         </Button>
+      </Box>
+    );
+  }
+
+  render() {
+    return (
+      <Stack spacing={1} sx={{ m: 1, p: 1 }}>
+        <Typography variant="h4">Create Token</Typography>
+        {this.renderInner()}
       </Stack>
     );
   }
