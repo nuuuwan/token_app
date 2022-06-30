@@ -1,23 +1,36 @@
-const LOCAL_STORAGE_KEY_TOKEN_URL_LIST = "token-app-token-url-list";
+import IDX from "../../nonview/base/IDX";
+const LOCAL_STORAGE_KEY_TOKEN_INFO_LIST = "token-app-token-info-list";
 
 export default class LocalTokenStore {
-  static getTokenUrlList() {
-    const dataJSON = localStorage.getItem(LOCAL_STORAGE_KEY_TOKEN_URL_LIST);
+  static dedupeAndSort(tokenInfoList) {
+    return Object.values(
+      IDX.build(
+        tokenInfoList,
+        (x) => x.url,
+        (x) => x
+      )
+    ).sort(function (a, b) {
+      return a.payload.timeExpiryUT - b.payload.timeExpiryUT;
+    });
+  }
+
+  static getTokenInfoList() {
+    const dataJSON = localStorage.getItem(LOCAL_STORAGE_KEY_TOKEN_INFO_LIST);
     if (!dataJSON) {
       return [];
     }
     return JSON.parse(dataJSON);
   }
 
-  static addTokenUrl(url) {
-    let urlList = LocalTokenStore.getTokenUrlList();
-    urlList.push(url);
-    urlList = [...new Set(urlList)];
-    LocalTokenStore.setTokenUrlList(urlList);
+  static addTokenInfo(tokenInfo) {
+    let tokenInfoList = LocalTokenStore.getTokenInfoList();
+    tokenInfoList.push(tokenInfo);
+    LocalTokenStore.setTokenInfoList(tokenInfoList);
   }
 
-  static setTokenUrlList(urlList) {
-    const dataJSON = JSON.stringify(urlList);
-    localStorage.setItem(LOCAL_STORAGE_KEY_TOKEN_URL_LIST, dataJSON);
+  static setTokenInfoList(tokenInfoList) {
+    tokenInfoList = LocalTokenStore.dedupeAndSort(tokenInfoList);
+    const dataJSON = JSON.stringify(tokenInfoList);
+    localStorage.setItem(LOCAL_STORAGE_KEY_TOKEN_INFO_LIST, dataJSON);
   }
 }
