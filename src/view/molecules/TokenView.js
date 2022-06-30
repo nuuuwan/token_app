@@ -9,7 +9,8 @@ import TimeX from "../../nonview/base/TimeX";
 import LabelledText from "../../view/molecules/LabelledText";
 import TrustedSourceView from "../../view/molecules/TrustedSourceView";
 
-export default function TokenView({ payload, publicKey, url }) {
+export default function TokenView({ tokenInfo }) {
+  const { payload, publicKey, url } = tokenInfo;
   const isExpired = payload.timeExpiryUT < TimeX.getUnixTime();
   const color = isExpired ? "red" : "darkgreen";
   return (

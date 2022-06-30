@@ -14,12 +14,12 @@ export default class ViewTokenPage extends Component {
     const { token } = context;
     const { publicKey, payload } = Crypto.decryptToken(token);
     const url = URLContext.getURL();
-
-    LocalTokenStore.addTokenInfo({ publicKey, payload, url });
+    const tokenInfo = { publicKey, payload, url };
+    LocalTokenStore.addTokenInfo(tokenInfo);
 
     return (
       <Box>
-        <TokenView payload={payload} publicKey={publicKey} url={url} />
+        <TokenView tokenInfo={tokenInfo} />
       </Box>
     );
   }
