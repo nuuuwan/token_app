@@ -11,6 +11,7 @@ import CreateTokenPage from "../../view/pages/CreateTokenPage";
 import CryptoKeysPage from "../../view/pages/CryptoKeysPage";
 import TokenListPage from "../../view/pages/TokenListPage";
 import ViewTokenPage from "../../view/pages/ViewTokenPage";
+import ScanTokenPage from "../../view/pages/ScanTokenPage";
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -76,10 +77,13 @@ export default class HomePage extends Component {
         return <CreateTokenPage />;
       case "viewToken":
         return <ViewTokenPage />;
+
+      case "scanToken":
+        return <ScanTokenPage />;
       case "tokenList":
         return <TokenListPage />;
       default:
-        return <CryptoKeysPage />;
+        return <TokenListPage />;
     }
   }
 

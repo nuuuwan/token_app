@@ -5,6 +5,7 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import Paper from "@mui/material/Paper";
 import KeyIcon from "@mui/icons-material/Key";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
+import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
 import ViewListIcon from "@mui/icons-material/ViewList";
 
 export default function HomePageBottomNavigation({ onClickOpenPage }) {
@@ -23,6 +24,11 @@ export default function HomePageBottomNavigation({ onClickOpenPage }) {
           label="Create Token"
           icon={<NoteAddIcon />}
           onClick={() => onClickOpenPage("createToken")}
+        />
+        <BottomNavigationAction
+          label="Scan Token"
+          icon={<QrCodeScannerIcon />}
+          onClick={() => onClickOpenPage("scanToken")}
         />
         <BottomNavigationAction
           label="My Tokens"
