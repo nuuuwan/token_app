@@ -8,6 +8,7 @@ Admin Mode
 Clear Local Cache
 Code Repository
 Copy App Link
+Create Crypto Keys
 Create Token
 Creation
 Crypto Keys
@@ -38,3 +39,4 @@ Untrusted Source
 User Mode
 Vehicle Number
 You can either generate new crypto keys, or input previously generated and saved crypto keys.
+You need Crypto Keys to genenerate a token.
