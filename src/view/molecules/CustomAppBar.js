@@ -4,12 +4,12 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import AlignCenter from "../../view/atoms/AlignCenter";
 
 import { t } from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
 
 import AppColors from "../../view/_constants/AppColors";
+import AlignCenter from "../../view/atoms/AlignCenter";
 import HelpMenu from "./HelpMenu.js";
 
 const STYLE = {
