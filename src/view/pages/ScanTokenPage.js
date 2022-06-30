@@ -1,4 +1,3 @@
-import { Component } from "react";
 import { QrReader } from "react-qr-reader";
 
 import Alert from "@mui/material/Alert";
@@ -6,6 +5,8 @@ import Stack from "@mui/material/Stack";
 
 import { t } from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
+
+import AbstractInnerPage from "../../view/pages/AbstractInnerPage";
 
 const STYLE_QR_READER = {
   width: "100%",
@@ -16,7 +17,7 @@ const STYLE_QR_READER_CONTAINER = {
   backgroundColor: "#eee",
 };
 
-export default class ScanToken extends Component {
+export default class ScanToken extends AbstractInnerPage {
   onResult(result, error) {
     if (result && result.text) {
       const url = result.text;
@@ -37,7 +38,7 @@ export default class ScanToken extends Component {
           style={STYLE_QR_READER}
           containerStyle={STYLE_QR_READER_CONTAINER}
           constraints={{
-            facingMode: 'environment'
+            facingMode: "environment",
           }}
         />
         <Alert severity="info">

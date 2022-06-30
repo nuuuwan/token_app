@@ -1,13 +1,12 @@
-import { Component } from "react";
-
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 
 import LocalTokenStore from "../../nonview/core/LocalTokenStore";
 
 import TokenView from "../../view/molecules/TokenView";
+import AbstractInnerPage from "../../view/pages/AbstractInnerPage";
 
-export default class TokenListPage extends Component {
+export default class TokenListPage extends AbstractInnerPage {
   renderTokenList() {
     const tokenInfoList = LocalTokenStore.getTokenInfoList();
 

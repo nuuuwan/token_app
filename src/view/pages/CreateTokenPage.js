@@ -1,11 +1,8 @@
-import { Component } from "react";
-
 import Alert from "@mui/material/Alert";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
-import PageLink from "../../view/molecules/PageLink"
 
 import Crypto from "../../nonview/base/Crypto";
 import { t } from "../../nonview/base/I18N";
@@ -15,8 +12,10 @@ import Validate from "../../nonview/core/Validate";
 
 import InputPriority from "../../view/molecules/InputPriority";
 import InputVehicleNumber from "../../view/molecules/InputVehicleNumber";
+import PageLink from "../../view/molecules/PageLink";
+import AbstractInnerPage from "../../view/pages/AbstractInnerPage";
 
-export default class CreateTokenPage extends Component {
+export default class CreateTokenPage extends AbstractInnerPage {
   constructor(props) {
     super(props);
     this.state = {
@@ -54,9 +53,7 @@ export default class CreateTokenPage extends Component {
     const keyPair = Crypto.getKeyPairFromLocalStorage();
     if (!keyPair.secretKey) {
       return (
-        <Alert
-          severity="error"
-        >
+        <Alert severity="error">
           {t("You need Crypto Keys to genenerate a token.")}
           <PageLink
             page={"cryptoKeys"}

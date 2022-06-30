@@ -1,5 +1,3 @@
-import { Component } from "react";
-
 import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
@@ -13,8 +11,9 @@ import Validate from "../../nonview/core/Validate";
 import Condition from "../../view/atoms/Condition";
 import InputCryptoKey from "../../view/molecules/InputCryptoKey";
 import TrustedSourceView from "../../view/molecules/TrustedSourceView";
+import AbstractInnerPage from "../../view/pages/AbstractInnerPage";
 
-export default class CryptoKeysPage extends Component {
+export default class CryptoKeysPage extends AbstractInnerPage {
   constructor(props) {
     super(props);
     this.state = {
