@@ -35,4 +35,17 @@ export default class LocalTokenStore {
     const dataJSON = JSON.stringify(tokenInfoList);
     localStorage.setItem(LOCAL_STORAGE_KEY_TOKEN_INFO_LIST, dataJSON);
   }
+
+  static getTokenInfoIdx() {
+    return IDX.build(
+      LocalTokenStore.getTokenInfoList(),
+      (x) => x.url,
+      (x) => x
+    );
+  }
+
+  static getTokenInfoFromURL(url) {
+    const tokenInfoIdx = LocalTokenStore.getTokenInfoIdx();
+    return tokenInfoIdx[url];
+  }
 }
