@@ -7,7 +7,6 @@ import Typography from "@mui/material/Typography";
 
 import TimeX from "../../nonview/base/TimeX";
 
-import IconText from "../../view/molecules/IconText";
 import LabelledText from "../../view/molecules/LabelledText";
 import TrustedSourceView from "../../view/molecules/TrustedSourceView";
 
@@ -31,12 +30,17 @@ export default function TokenView({ tokenInfo, short }) {
             <QRCode value={url} size={100} />
           </Box>
           <Box sx={{ marginLeft: 2 }}>
-            <IconText label="Vehicle Number" text={payload.vehicleNumber} />
-            <IconText label="Priority" text={payload.priority} />
-            <IconText
+            <LabelledText
+              label="Vehicle Number"
+              text={payload.vehicleNumber}
+              noLabel
+            />
+            <LabelledText label="Priority" text={payload.priority} noLabel />
+            <LabelledText
               label="Time Expiry"
               text={TimeX.formatTime(payload.timeExpiryUT)}
               color={color}
+              noLabel
             />
           </Box>
         </Box>
