@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/token_app/static/js/main.9217aea0.js",
+    "main.js": "/token_app/static/js/main.cd1101ef.js",
     "static/js/787.fdb15d53.chunk.js": "/token_app/static/js/787.fdb15d53.chunk.js",
     "index.html": "/token_app/index.html",
-    "main.9217aea0.js.map": "/token_app/static/js/main.9217aea0.js.map",
+    "main.cd1101ef.js.map": "/token_app/static/js/main.cd1101ef.js.map",
     "787.fdb15d53.chunk.js.map": "/token_app/static/js/787.fdb15d53.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.9217aea0.js"
+    "static/js/main.cd1101ef.js"
   ]
 }
