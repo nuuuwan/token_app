@@ -16,5 +16,3 @@
 
 
 # NOW
-
-* Render Recent Tokens
