@@ -5,11 +5,11 @@ import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
-import Crypto from "../../nonview/base/Crypto";
+import LocalTokenStore from "../../nonview/core/LocalTokenStore";
 
 export default class TokenListPage extends Component {
   renderTokenList() {
-    const tokenUrlList = Crypto.getTokenUrlList();
+    const tokenUrlList = LocalTokenStore.getTokenUrlList();
 
     if (!tokenUrlList || tokenUrlList.length === 0) {
       return (
