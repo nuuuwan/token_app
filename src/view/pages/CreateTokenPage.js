@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
+import PageLink from "../../view/molecules/PageLink"
 
 import Crypto from "../../nonview/base/Crypto";
 import { t } from "../../nonview/base/I18N";
@@ -49,23 +50,19 @@ export default class CreateTokenPage extends Component {
     this.setState({ priority });
   }
 
-  gotoCryptoKeys() {
-    let context = URLContext.getContext();
-    context.page = "cryptoKeys";
-    URLContext.setContext(context);
-    window.location.reload(true);
-  }
-
   renderInner() {
     const keyPair = Crypto.getKeyPairFromLocalStorage();
     if (!keyPair.secretKey) {
       return (
         <Alert
           severity="error"
-          onClick={this.gotoCryptoKeys}
-          sx={{ cursor: "pointer" }}
         >
           {t("You need Crypto Keys to genenerate a token.")}
+          <PageLink
+            page={"cryptoKeys"}
+            onClickOpenPage={this.props.onClickOpenPage}
+            label={t("Create Crypto Keys")}
+          />
         </Alert>
       );
     }
