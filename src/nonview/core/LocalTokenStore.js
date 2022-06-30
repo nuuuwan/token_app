@@ -1,4 +1,5 @@
 import IDX from "../../nonview/base/IDX";
+
 const LOCAL_STORAGE_KEY_TOKEN_INFO_LIST = "token-app-token-info-list";
 
 export default class LocalTokenStore {

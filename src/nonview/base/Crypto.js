@@ -88,5 +88,4 @@ export default class Crypto {
     );
     return { publicKey, payload };
   }
-
 }
