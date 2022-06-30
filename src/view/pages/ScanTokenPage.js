@@ -36,6 +36,9 @@ export default class ScanToken extends Component {
           onResult={this.onResult.bind(this)}
           style={STYLE_QR_READER}
           containerStyle={STYLE_QR_READER_CONTAINER}
+          constraints={{
+            facingMode: 'environment'
+          }}
         />
         <Alert severity="info">
           {t(
