@@ -14,6 +14,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 import LanguageIcon from "@mui/icons-material/Language";
 import SettingsIcon from "@mui/icons-material/Settings";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
+import AppColors from "../../view/_constants/AppColors";
 
 import I18N, { t, LANG_LIST } from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
@@ -136,18 +137,18 @@ export default function HelpMenu() {
         {isAdminMode ? (
           <MenuItem onClick={onClickUserMode}>
             <ListItemIcon>
-              <SupervisorAccountIcon sx={{ color: "maroon" }} />
+              <SupervisorAccountIcon sx={{ color: AppColors.Receiver }} />
             </ListItemIcon>
-            <ListItemText sx={{ color: "maroon" }}>
+            <ListItemText sx={{ color: AppColors.Receiver }}>
               {t("User Mode")}
             </ListItemText>
           </MenuItem>
         ) : (
           <MenuItem onClick={onClickAdminMode}>
             <ListItemIcon>
-              <AdminPanelSettingsIcon sx={{ color: "darkblue" }} />
+              <AdminPanelSettingsIcon sx={{ color: AppColors.Issuer }} />
             </ListItemIcon>
-            <ListItemText sx={{ color: "darkblue" }}>
+            <ListItemText sx={{ color: AppColors.Issuer }}>
               {t("Admin Mode")}
             </ListItemText>
           </MenuItem>

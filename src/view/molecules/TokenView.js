@@ -8,6 +8,7 @@ import TimeX from "../../nonview/base/TimeX";
 
 import LabelledText from "../../view/molecules/LabelledText";
 import TrustedSourceView from "../../view/molecules/TrustedSourceView";
+import AppColors from "../../view/_constants/AppColors";
 
 export default function TokenView({ tokenInfo, short }) {
   const { payload, publicKey, url } = tokenInfo;
@@ -26,7 +27,7 @@ export default function TokenView({ tokenInfo, short }) {
       <Card sx={{ m: 1, p: 3, cursor: "pointer" }} onClick={onClick}>
         <Box sx={{ display: "flex" }}>
           <Box>
-            <QRCode value={url} size={100} fgColor="maroon" />
+            <QRCode value={url} size={100} fgColor={AppColors.QRCode} />
           </Box>
           <Box sx={{ marginLeft: 2 }}>
             <LabelledText
@@ -49,7 +50,7 @@ export default function TokenView({ tokenInfo, short }) {
   } else {
     return (
       <Stack spacing={1} sx={{ m: 1, p: 3 }}>
-        <QRCode value={url} fgColor="maroon" />
+        <QRCode value={url} fgColor={AppColors.QRCode} />
         <Box>
           <LabelledText label="Vehicle Number" text={payload.vehicleNumber} />
           <LabelledText label="Priority" text={payload.priority} />

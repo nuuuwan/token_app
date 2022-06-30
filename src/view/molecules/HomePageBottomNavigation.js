@@ -8,6 +8,7 @@ import KeyIcon from "@mui/icons-material/Key";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
 import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
 import ViewListIcon from "@mui/icons-material/ViewList";
+import AppColors from "../../view/_constants/AppColors";
 
 import { t } from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
@@ -54,7 +55,9 @@ export default function HomePageBottomNavigation({ onClickOpenPage }) {
           if (config.showInOnlyAdminMode && !isAdminMode) {
             return null;
           }
-          const color = config.showInOnlyAdminMode ? "darkblue" : "maroon";
+          const color = config.showInOnlyAdminMode
+            ? AppColors.Issuer
+            : AppColors.Receiver;
           return (
             <Tooltip key={key} title={t(config.label)}>
               <BottomNavigationAction
