@@ -27,7 +27,7 @@ export default function TokenView({ tokenInfo, short }) {
       <Card sx={{ m: 1, p: 3, cursor: "pointer" }} onClick={onClick}>
         <Box sx={{ display: "flex" }}>
           <Box>
-            <QRCode value={url} size={100} />
+            <QRCode value={url} size={100} fgColor="maroon" />
           </Box>
           <Box sx={{ marginLeft: 2 }}>
             <LabelledText
@@ -51,7 +51,7 @@ export default function TokenView({ tokenInfo, short }) {
     return (
       <Stack spacing={1} sx={{ m: 1, p: 3 }}>
         <Typography variant="h4">Token</Typography>
-        <QRCode value={url} />
+        <QRCode value={url} fgColor="maroon" />
         <Box>
           <LabelledText label="Vehicle Number" text={payload.vehicleNumber} />
           <LabelledText label="Priority" text={payload.priority} />
