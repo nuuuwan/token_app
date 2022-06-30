@@ -40,7 +40,7 @@ export default class HomePage extends Component {
   getContext() {
     let context = URLContext.getContext();
     if (!context.page) {
-      context.page = "cryptoKeys";
+      context.page = "tokenList";
     }
     if (!context.appMode) {
       context.appMode = "receiver";
