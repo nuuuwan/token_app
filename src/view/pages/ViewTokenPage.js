@@ -6,8 +6,8 @@ import LocalTokenStore from "../../nonview/core/LocalTokenStore";
 
 import TokenView from "../../view/molecules/TokenView";
 
-import AbstractInnerPage from "../../view/pages/AbstractInnerPage"
-import QrCode2Icon from '@mui/icons-material/QrCode2';
+import AbstractInnerPage from "../../view/pages/AbstractInnerPage";
+import QrCode2Icon from "@mui/icons-material/QrCode2";
 
 export default class ViewTokenPage extends AbstractInnerPage {
   get page() {
@@ -23,7 +23,6 @@ export default class ViewTokenPage extends AbstractInnerPage {
   get showInOnlyAdminMode() {
     return false;
   }
-
 
   render() {
     const url = URLContext.getURL();

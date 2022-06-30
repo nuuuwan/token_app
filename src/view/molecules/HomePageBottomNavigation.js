@@ -9,7 +9,6 @@ import { t } from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
 
 import AppColors from "../../view/_constants/AppColors";
-
 import PAGE_CONFIG_LIST from "../../view/pages/PAGE_CONFIG_LIST";
 
 export default function HomePageBottomNavigation({ onClickOpenPage }) {

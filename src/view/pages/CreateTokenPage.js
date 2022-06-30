@@ -2,7 +2,7 @@ import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
-import AlignRight from "../../view/atoms/AlignRight"
+import AlignRight from "../../view/atoms/AlignRight";
 
 import Crypto from "../../nonview/base/Crypto";
 import { t } from "../../nonview/base/I18N";
@@ -14,7 +14,6 @@ import InputPriority from "../../view/molecules/InputPriority";
 import InputVehicleNumber from "../../view/molecules/InputVehicleNumber";
 import PageLink from "../../view/molecules/PageLink";
 import AbstractInnerPage from "../../view/pages/AbstractInnerPage";
-
 
 export default class CreateTokenPage extends AbstractInnerPage {
   constructor(props) {
@@ -34,7 +33,6 @@ export default class CreateTokenPage extends AbstractInnerPage {
   get Icon() {
     return NoteAddIcon;
   }
-
 
   onClickCreateToken() {
     const { vehicleNumber, priority } = this.state;
@@ -95,7 +93,7 @@ export default class CreateTokenPage extends AbstractInnerPage {
             variant="contained"
             startIcon={<NoteAddIcon />}
             disabled={!areAllValid}
-            sx={{backgroundColor: this.color}}
+            sx={{ backgroundColor: this.color }}
           >
             {t("Create Token")}
           </Button>

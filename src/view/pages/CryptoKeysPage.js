@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 import SaveIcon from "@mui/icons-material/Save";
-
+import AlignRight from "../../view/atoms/AlignRight";
 import Crypto, { CRYPTO_KEY_TYPE } from "../../nonview/base/Crypto";
 import { t } from "../../nonview/base/I18N";
 import Validate from "../../nonview/core/Validate";
@@ -31,7 +31,6 @@ export default class CryptoKeysPage extends AbstractInnerPage {
   get Icon() {
     return KeyIcon;
   }
-
 
   onClickGenerate() {
     const keyPair = Crypto.getKeyPair();
@@ -84,6 +83,17 @@ export default class CryptoKeysPage extends AbstractInnerPage {
           </Alert>
         </Condition>
 
+        <AlignRight>
+          <Button
+            onClick={this.onClickGenerate.bind(this)}
+            variant="contained"
+            startIcon={<AutorenewIcon />}
+            sx={{ backgroundColor: this.color }}
+          >
+            {t("Generate New Crypto Keys")}
+          </Button>
+        </AlignRight>
+
         <InputCryptoKey
           cryptoKeyType={CRYPTO_KEY_TYPE.PUBLIC}
           selectedCryptoKey={keyPair.publicKey}
@@ -96,24 +106,17 @@ export default class CryptoKeysPage extends AbstractInnerPage {
           onChangeCryptoKey={this.onChangeSecretKey.bind(this)}
         />
 
-        <Button
-          onClick={this.onClickGenerate.bind(this)}
-          variant="contained"
-          startIcon={<AutorenewIcon />}
-          sx={{backgroundColor: this.color}}
-        >
-          {t("Generate New Crypto Keys")}
-        </Button>
-
-        <Button
-          onClick={this.onClickSave.bind(this)}
-          variant="contained"
-          startIcon={<SaveIcon />}
-          disabled={!areKeyPairsValid || isBrowserKeyPair}
-          sx={{backgroundColor: this.color}}
-        >
-          {t("Save to Browser")}
-        </Button>
+        <AlignRight>
+          <Button
+            onClick={this.onClickSave.bind(this)}
+            variant="contained"
+            startIcon={<SaveIcon />}
+            disabled={!areKeyPairsValid || isBrowserKeyPair}
+            sx={{ backgroundColor: this.color }}
+          >
+            {t("Save to Browser")}
+          </Button>
+        </AlignRight>
 
         <Alert severity="info">
           {t(

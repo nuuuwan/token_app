@@ -1,7 +1,8 @@
 import Button from "@mui/material/Button";
-import {PAGE_CONFIG_IDX} from "../../view/pages/PAGE_CONFIG_LIST";
 
-export default function PageLink({ page, onClickOpenPage}) {
+import { PAGE_CONFIG_IDX } from "../../view/pages/PAGE_CONFIG_LIST";
+
+export default function PageLink({ page, onClickOpenPage }) {
   const onClick = function () {
     onClickOpenPage(page);
   };
@@ -11,8 +12,8 @@ export default function PageLink({ page, onClickOpenPage}) {
     <Button
       variant="contained"
       onClick={onClick}
-      startIcon={<config.Icon/>}
-      sx={{backgroundColor: config.color}}
+      startIcon={<config.Icon />}
+      sx={{ backgroundColor: config.color }}
     >
       {config.label}
     </Button>

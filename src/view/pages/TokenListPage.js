@@ -7,7 +7,7 @@ import TokenView from "../../view/molecules/TokenView";
 import AbstractInnerPage from "../../view/pages/AbstractInnerPage";
 
 import ViewListIcon from "@mui/icons-material/ViewList";
-import PageLink from "../../view/molecules/PageLink"
+import PageLink from "../../view/molecules/PageLink";
 
 export default class TokenListPage extends AbstractInnerPage {
   get page() {

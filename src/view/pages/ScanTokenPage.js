@@ -2,12 +2,12 @@ import { QrReader } from "react-qr-reader";
 
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
+import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
 
 import { t } from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
 
 import AbstractInnerPage from "../../view/pages/AbstractInnerPage";
-import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
 
 const STYLE_QR_READER = {
   width: "100%",
