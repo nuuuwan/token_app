@@ -9,8 +9,8 @@ import CustomAppBar from "../../view/molecules/CustomAppBar";
 import HomePageBottomNavigation from "../../view/molecules/HomePageBottomNavigation";
 import CreateTokenPage from "../../view/pages/CreateTokenPage";
 import CryptoKeysPage from "../../view/pages/CryptoKeysPage";
-import ViewTokenPage from "../../view/pages/ViewTokenPage";
 import TokenListPage from "../../view/pages/TokenListPage";
+import ViewTokenPage from "../../view/pages/ViewTokenPage";
 
 export default class HomePage extends Component {
   constructor(props) {
