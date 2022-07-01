@@ -148,7 +148,7 @@ export default class Token {
     return URLContext.contextToURL({
       tokenEncrypted: this.tokenEncrypted,
       page: "viewToken",
-    }).replace("http://localhost:3000", "https://nuuuwan.github.io");
+    });
   }
 
   open() {
