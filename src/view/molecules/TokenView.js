@@ -1,13 +1,15 @@
 import QRCode from "react-qr-code";
 
+import Alert from "@mui/material/Alert";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
 
 import TimeX from "../../nonview/base/TimeX";
 import WWW from "../../nonview/base/WWW";
-import TimeView from "../../view/atoms/TimeView";
+
 import AppColors from "../../view/_constants/AppColors";
+import TimeView from "../../view/atoms/TimeView";
 import LabelledText from "../../view/molecules/LabelledText";
 import TrustedSourceView from "../../view/molecules/TrustedSourceView";
 
@@ -22,10 +24,16 @@ export default function TokenView({ token, short }) {
   const renderedSource = (
     <TrustedSourceView publicKey={token.issuerPublicKey} />
   );
+  const renderedExpirationWarning = isExpired ? (
+    <Alert severity="error">This Token has Expired</Alert>
+  ) : null;
 
   if (short) {
     return (
-      <Card sx={{ m: 1, p: 3, cursor: "pointer" }} onClick={onClick}>
+      <Card
+        sx={{ m: 1, p: 0, marginBottom: 3, cursor: "pointer" }}
+        onClick={onClick}
+      >
         <Box sx={{ display: "flex" }}>
           <Box>
             <QRCode value={url} size={100} fgColor={AppColors.QRCode} />
@@ -45,29 +53,28 @@ export default function TokenView({ token, short }) {
             />
           </Box>
         </Box>
+        {renderedExpirationWarning}
         {renderedSource}
       </Card>
     );
   } else {
     return (
-      <Stack spacing={1} sx={{ m: 1, p: 3 }}>
+      <Stack spacing={1} sx={{ m: 1, p: 1 }}>
         <QRCode value={url} fgColor={AppColors.QRCode} />
-        <Box>
-          <LabelledText label="Vehicle Number" text={token.vehicleNumber} />
-          <LabelledText label="Priority" text={token.priority} />
-          <LabelledText
-            label="Expiration"
-            text={<TimeView ut={token.timeExpiryUT} />}
-            color={color}
-          />
-
-          <LabelledText
-            label="Creation"
-            text={<TimeView ut={token.timeCreatedUT} />}
-          />
-          <LabelledText label="Public Key" text={token.issuerPublicKey} />
-          {renderedSource}
-        </Box>
+        <LabelledText label="Vehicle Number" text={token.vehicleNumber} />
+        <LabelledText label="Priority" text={token.priority} />
+        <LabelledText
+          label="Expiration"
+          text={<TimeView ut={token.timeExpiryUT} />}
+          color={color}
+        />
+        <LabelledText
+          label="Creation"
+          text={<TimeView ut={token.timeCreatedUT} />}
+        />
+        <LabelledText label="Public Key" text={token.issuerPublicKey} />
+        {renderedExpirationWarning}
+        {renderedSource}
       </Stack>
     );
   }
