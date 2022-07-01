@@ -7,8 +7,8 @@ import TokenListPage from "../../view/pages/TokenListPage";
 import ViewTokenPage from "../../view/pages/ViewTokenPage";
 
 const PAGE_LIST = [
-  CreateTokenPage,
   CryptoKeysPage,
+  CreateTokenPage,
   ScanTokenPage,
   TokenListPage,
   ViewTokenPage,
