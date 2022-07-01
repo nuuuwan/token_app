@@ -9,7 +9,6 @@ import LabelledTextInput from "../../view/molecules/LabelledTextInput";
 export default function InputPriority({ selectedPriority, onChangePriority }) {
   let alertText = undefined;
   const isValid = Validate.priority(selectedPriority);
-  console.debug({ isValid, selectedPriority });
   if (selectedPriority && !isValid) {
     alertText =
       "A valid priority value must be an number between 1 and 10,000.";
