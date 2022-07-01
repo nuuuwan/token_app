@@ -27,7 +27,7 @@ export default class CryptoKeysPage extends AbstractInnerPage {
     return "cryptoKeys";
   }
   get label() {
-    return "Crypto Keys";
+    return "Generate Crypto Keys";
   }
   get Icon() {
     return KeyIcon;
