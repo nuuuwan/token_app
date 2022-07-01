@@ -1,14 +1,15 @@
 import { t } from "../../nonview/base/I18N";
 
+export const HOURS_IN = {
+  DAY: 24,
+  YEAR: 24 * 365.25,
+};
+
 export const SECONDS_IN = {
   MINUTE: 60,
   HOUR: 3_600,
   DAY: 86_400,
-};
-
-export const HOURS_IN = {
-  DAY: 24,
-  YEAR: 24 * 365.25,
+  WEEK: 86_400 * 7,
 };
 
 const MONTHS = [
@@ -64,27 +65,29 @@ export default class TimeX {
 
   static formatDeltaTime(delta) {
     for (let [duration, label] of [
+      [SECONDS_IN.WEEK, "week"],
       [SECONDS_IN.DAY, "day"],
       [SECONDS_IN.HOUR, "hour"],
       [SECONDS_IN.MINUTE, "minute"],
+      [1, "second"],
     ]) {
       if (delta > duration) {
         const x = parseInt(delta / duration);
         const pluralStr = x === 1 ? "" : "s";
-        return t(`000 ${label}${pluralStr}`, x);
+        return [x, `${label}${pluralStr}`];
       }
     }
-    return t("Now");
+    return [0, "seconds"];
   }
 
   static getHumanTime(ut) {
     const delta = ut - TimeX.getUnixTime();
     const absDelta = Math.abs(delta);
-    const deltaStr = TimeX.formatDeltaTime(absDelta);
+    const [x, labelStr] = TimeX.formatDeltaTime(absDelta);
     if (delta > 0) {
-      return t("In 000", deltaStr);
+      return t("In 000 " + labelStr, x);
     } else {
-      return t("000 ago", deltaStr);
+      return t("000 " + labelStr + " ago", x);
     }
   }
 }
