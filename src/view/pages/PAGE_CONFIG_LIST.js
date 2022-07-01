@@ -2,13 +2,16 @@ import IDX from "../../nonview/base/IDX";
 
 import CreateTokenPage from "../../view/pages/CreateTokenPage";
 import CryptoKeysPage from "../../view/pages/CryptoKeysPage";
+import TrustedIssuersPage from "../../view/pages/TrustedIssuersPage";
 import ScanTokenPage from "../../view/pages/ScanTokenPage";
 import TokenListPage from "../../view/pages/TokenListPage";
+
 import ViewTokenPage from "../../view/pages/ViewTokenPage";
 
 const PAGE_LIST = [
   CryptoKeysPage,
   CreateTokenPage,
+  TrustedIssuersPage,
   ScanTokenPage,
   TokenListPage,
   ViewTokenPage,
