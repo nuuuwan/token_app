@@ -25,7 +25,13 @@ const LABEL_TO_ICON = {
   Issuer: AdminPanelSettingsIcon,
 };
 
-export default function IconLabel({ label, star, children, color }) {
+export default function IconLabel({
+  label,
+  star,
+  children,
+  color,
+  additionalText,
+}) {
   let Icon = LABEL_TO_ICON[label];
   if (!Icon) {
     Icon = DEFAULT_ICON;
@@ -36,7 +42,7 @@ export default function IconLabel({ label, star, children, color }) {
     <AlignCenter>
       <Icon sx={{ opacity: 0.33, color }} />
       <Typography variant="caption" sx={{ opacity: 0.5, color }}>
-        {t(label) + starStr}
+        {additionalText ? additionalText : t(label) + starStr}
       </Typography>
       {children}
     </AlignCenter>

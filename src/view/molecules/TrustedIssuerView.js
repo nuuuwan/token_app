@@ -17,7 +17,13 @@ export default function TrustedIssuerView({ trustedIssuer, short }) {
   }
 
   if (short) {
-    return <IconLabel label="Trusted Issuer" color={AppColors.ValidText} />;
+    return (
+      <IconLabel
+        label="Trusted Issuer"
+        color={AppColors.ValidText}
+        additionalText={trustedIssuer.name}
+      />
+    );
   } else {
     return (
       <Box>
