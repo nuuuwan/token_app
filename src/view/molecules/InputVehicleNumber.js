@@ -11,7 +11,8 @@ export default function InputVehicleNumber({
   onChangeVehicleNumber,
 }) {
   let alertText = undefined;
-  if (selectedVehicleNumber && !Validate.vehicleNumber(selectedVehicleNumber)) {
+  const isValid = Validate.vehicleNumber(selectedVehicleNumber);
+  if (selectedVehicleNumber && !isValid) {
     alertText =
       "A valid vehicle number should have the format AB-1234 or ABC-1234";
   }
@@ -40,6 +41,7 @@ export default function InputVehicleNumber({
         label="Vehicle Number"
         text={selectedVehicleNumber}
         onChange={onChangeInner}
+        isValid={isValid}
       />
       {alertText ? <Alert severity="error">{t(alertText)}</Alert> : null}
     </Box>

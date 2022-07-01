@@ -29,9 +29,9 @@ export default function InputCryptoKey({
   }
 
   const { color, label } = cryptoKeyTypeToConfig[cryptoKeyType];
-
+  const isValid = Validate.cryptoKey(selectedCryptoKey);
   let alertText = undefined;
-  if (selectedCryptoKey && !Validate.cryptoKey(selectedCryptoKey)) {
+  if (selectedCryptoKey && !isValid) {
     alertText = "A valid CryptoKey value must be 44 characters long.";
   }
 
@@ -43,6 +43,7 @@ export default function InputCryptoKey({
         onChange={onChangeCryptoKey}
         multiline
         color={color}
+        isValid={isValid}
       >
         {children}
       </LabelledTextInput>
