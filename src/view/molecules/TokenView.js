@@ -6,7 +6,7 @@ import Stack from "@mui/material/Stack";
 
 import TimeX from "../../nonview/base/TimeX";
 import WWW from "../../nonview/base/WWW";
-
+import TimeView from "../../view/atoms/TimeView";
 import AppColors from "../../view/_constants/AppColors";
 import LabelledText from "../../view/molecules/LabelledText";
 import TrustedSourceView from "../../view/molecules/TrustedSourceView";
@@ -39,7 +39,7 @@ export default function TokenView({ token, short }) {
             <LabelledText label="Priority" text={token.priority} noLabel />
             <LabelledText
               label="Expiration"
-              text={TimeX.formatTime(token.timeExpiryUT)}
+              text={<TimeView ut={token.timeExpiryUT} />}
               color={color}
               noLabel
             />
@@ -57,13 +57,13 @@ export default function TokenView({ token, short }) {
           <LabelledText label="Priority" text={token.priority} />
           <LabelledText
             label="Expiration"
-            text={TimeX.formatTime(token.timeExpiryUT)}
+            text={<TimeView ut={token.timeExpiryUT} />}
             color={color}
           />
 
           <LabelledText
             label="Creation"
-            text={TimeX.formatTime(token.timeCreatedUT)}
+            text={<TimeView ut={token.timeCreatedUT} />}
           />
           <LabelledText label="Public Key" text={token.issuerPublicKey} />
           {renderedSource}
