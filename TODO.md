@@ -5,6 +5,7 @@
 # HIGH
 
 * Fix stickiness/extra load issues (ONGOING)
+* QR Code Bug
 
 # BIG PICTURE
 
