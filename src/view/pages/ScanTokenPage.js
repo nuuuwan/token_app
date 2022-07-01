@@ -41,10 +41,8 @@ export default class ScanToken extends AbstractInnerPage {
   onResult(result, error) {
     if (result && result.text) {
       const url = result.text;
-      alert(url);
       const token = Token.fromURL(url);
       Token.addTokenToLocalTokenIdx(token);
-      alert(JSON.stringify(token.dict));  
       token.open();
     }
   }
