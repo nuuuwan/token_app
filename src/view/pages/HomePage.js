@@ -32,7 +32,7 @@ export default class HomePage extends Component {
       context.page = "tokenList";
     }
     if (!context.mode) {
-      context.mode = "issuer";
+      context.mode = "receiver";
     }
     if (!context.lang) {
       context.lang = BASE_LANG;
