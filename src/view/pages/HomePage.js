@@ -32,13 +32,13 @@ export default class HomePage extends Component {
       context.page = "tokenList";
     }
     if (!context.mode) {
-      context.mode = "receiver";
+      context.mode = "issuer";
     }
     if (!context.lang) {
       context.lang = BASE_LANG;
     }
-    if (!context.token) {
-      context.token = "";
+    if (!context.tokenEncrypted) {
+      context.tokenEncrypted = "";
     }
 
     return context;
@@ -53,7 +53,7 @@ export default class HomePage extends Component {
     const context = { ...oldContext, ...newContext };
 
     if (context.page !== "viewToken") {
-      context.token = "";
+      context.tokenEncrypted = "";
     }
 
     URLContext.setContext(context);
