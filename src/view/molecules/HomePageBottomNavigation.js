@@ -31,7 +31,7 @@ export default function HomePageBottomNavigation({ onClickOpenPage }) {
           const color = isActive
             ? config.showInOnlyIssuerMode
               ? AppColors.Issuer
-              : AppColors.Receiver
+              : AppColors.Consumer
             : AppColors.Light;
 
           return (

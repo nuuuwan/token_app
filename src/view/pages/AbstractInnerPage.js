@@ -8,6 +8,6 @@ export default class AbstractInnerPage extends Component {
   }
 
   get color() {
-    return this.showInOnlyIssuerMode ? AppColors.Issuer : AppColors.Receiver;
+    return this.showInOnlyIssuerMode ? AppColors.Issuer : AppColors.Consumer;
   }
 }

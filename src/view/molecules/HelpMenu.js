@@ -119,9 +119,9 @@ export default function HelpMenu() {
         {isIssuerMode ? (
           <MenuItem onClick={onClickUserMode}>
             <ListItemIcon>
-              <SupervisorAccountIcon sx={{ color: AppColors.Receiver }} />
+              <SupervisorAccountIcon sx={{ color: AppColors.Consumer }} />
             </ListItemIcon>
-            <ListItemText sx={{ color: AppColors.Receiver }}>
+            <ListItemText sx={{ color: AppColors.Consumer }}>
               {t("User Mode")}
             </ListItemText>
           </MenuItem>
