@@ -8,9 +8,9 @@ import URLContext from "../../nonview/base/URLContext";
 
 import CustomAppBar from "../../view/molecules/CustomAppBar";
 import HomePageBottomNavigation from "../../view/molecules/HomePageBottomNavigation";
-import PAGE_CONFIG_LIST from "../../view/pages/PAGE_CONFIG_LIST";
-
-const DEFAULT_PAGE_CONFIG = PAGE_CONFIG_LIST[4];
+import PAGE_CONFIG_LIST, {
+  DEFAULT_PAGE_CONFIG,
+} from "../../view/pages/PAGE_CONFIG_LIST";
 
 const STYLE_INNER_PAGE_BOX = {
   marginTop: 10,
@@ -73,14 +73,20 @@ export default class HomePage extends Component {
   }
 
   getInnerPageConfig() {
-    const { context } = this.state;
+    let { context } = this.state;
 
     for (let config of PAGE_CONFIG_LIST) {
       if (config.page === context.page) {
-        return config;
+        if (!config.showInOnlyAdminMode || context.mode === "issuer") {
+          context.page = config.page;
+          this.setContext(context);
+          return config;
+        }
       }
     }
 
+    context.page = DEFAULT_PAGE_CONFIG.page;
+    this.setContext(context);
     return DEFAULT_PAGE_CONFIG;
   }
 
