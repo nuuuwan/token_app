@@ -54,7 +54,7 @@ export default class I18N {
 
     const entry = DICTIONARY[s];
     if (!entry) {
-      console.warn(`[I18N] ${s}`);
+      console.warn(`${s}`);
       return s;
     }
 
@@ -65,7 +65,7 @@ export default class I18N {
 
     const translation = entry[currentLang];
     if (!translation) {
-      console.warn(`[I18N] ${s}`);
+      console.warn(`${s}`);
       return s;
     }
 
