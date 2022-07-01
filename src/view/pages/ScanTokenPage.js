@@ -6,6 +6,7 @@ import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
 
 import { t } from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
+import WWW from "../../nonview/base/WWW";
 
 import AbstractInnerPage from "../../view/pages/AbstractInnerPage";
 
@@ -46,7 +47,7 @@ export default class ScanToken extends AbstractInnerPage {
 
       if (context.token && context.page === "viewToken") {
         console.debug("Openning URL: " + url);
-        URLContext.open(url);
+        WWW.open(url);
       }
     }
   }

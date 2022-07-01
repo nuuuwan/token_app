@@ -5,6 +5,7 @@ import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
 
 import TimeX from "../../nonview/base/TimeX";
+import WWW from "../../nonview/base/WWW";
 
 import AppColors from "../../view/_constants/AppColors";
 import LabelledText from "../../view/molecules/LabelledText";
@@ -18,8 +19,7 @@ export default function TokenView({ tokenInfo, short }) {
   const color = isExpired ? "red" : "darkgreen";
 
   const onClick = function () {
-    window.history.pushState("", "", url);
-    window.location.reload(true);
+    WWW.open(url);
   };
 
   const renderedSource = <TrustedSourceView publicKey={publicKey} />;
