@@ -1,5 +1,5 @@
 import Alert from "@mui/material/Alert";
-import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
 import ViewListIcon from "@mui/icons-material/ViewList";
 
 import Token from "../../nonview/core/Token";
@@ -43,11 +43,7 @@ export default class TokenListPage extends AbstractInnerPage {
     });
   }
   render() {
-    return (
-      <Stack spacing={1} sx={{ m: 1, p: 1 }}>
-        {this.renderTokenList()}
-      </Stack>
-    );
+    return <Box>{this.renderTokenList()}</Box>;
   }
 }
 
