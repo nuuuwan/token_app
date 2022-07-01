@@ -67,7 +67,7 @@ export default function HelpMenu() {
     window.location.reload(true);
   };
 
-  const onClickUserMode = function () {
+  const onClickConsumerMode = function () {
     let context = URLContext.getContext();
     context.mode = "receiver";
     context.page = "tokenList";
@@ -117,12 +117,12 @@ export default function HelpMenu() {
         })}
         <Divider />
         {isIssuerMode ? (
-          <MenuItem onClick={onClickUserMode}>
+          <MenuItem onClick={onClickConsumerMode}>
             <ListItemIcon>
               <SupervisorAccountIcon sx={{ color: AppColors.Consumer }} />
             </ListItemIcon>
             <ListItemText sx={{ color: AppColors.Consumer }}>
-              {t("User Mode")}
+              {t("Consumer Mode")}
             </ListItemText>
           </MenuItem>
         ) : (
