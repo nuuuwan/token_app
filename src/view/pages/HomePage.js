@@ -77,7 +77,7 @@ export default class HomePage extends Component {
 
     for (let config of PAGE_CONFIG_LIST) {
       if (config.page === context.page) {
-        if (!config.showInOnlyAdminMode || context.mode === "issuer") {
+        if (!config.showInOnlyIssuerMode || context.mode === "issuer") {
           context.page = config.page;
           this.setContext(context);
           return config;

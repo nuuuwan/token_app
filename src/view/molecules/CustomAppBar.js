@@ -20,8 +20,8 @@ const STYLE = {
 };
 
 export default function CustomAppBar({ title, Icon }) {
-  const isAdminMode = URLContext.getContext().mode === "issuer";
-  const color = isAdminMode ? AppColors.Issuer : AppColors.Receiver;
+  const isIssuerMode = URLContext.getContext().mode === "issuer";
+  const color = isIssuerMode ? AppColors.Issuer : AppColors.Receiver;
   return (
     <Box sx={STYLE}>
       <AppBar sx={{ backgroundColor: color }} elevation={10}>

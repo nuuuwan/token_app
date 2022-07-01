@@ -22,7 +22,7 @@ const PAGE_CONFIG_LIST = PAGE_LIST.map(function (Page) {
     page: pageInstance.page,
     label: pageInstance.label,
     Icon: pageInstance.Icon,
-    showInOnlyAdminMode: pageInstance.showInOnlyAdminMode,
+    showInOnlyIssuerMode: pageInstance.showInOnlyIssuerMode,
     color: pageInstance.color,
   };
 });

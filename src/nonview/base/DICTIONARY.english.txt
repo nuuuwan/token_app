@@ -14,7 +14,7 @@ A priority value is required to generate a token.
 A valid CryptoKey value must be 44 characters long.
 A valid vehicle number is required to generate a token.
 A valid vehicle number should have the format AB-1234 or ABC-1234
-Admin Mode
+Issuer Mode
 April
 August
 Clear Local Cache

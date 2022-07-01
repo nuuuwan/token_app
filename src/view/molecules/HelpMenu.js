@@ -60,7 +60,7 @@ export default function HelpMenu() {
     window.location.reload(true);
   };
 
-  const onClickAdminMode = function () {
+  const onClickIssuerMode = function () {
     let context = URLContext.getContext();
     context.mode = "issuer";
     URLContext.setContext(context);
@@ -75,7 +75,7 @@ export default function HelpMenu() {
     window.location.reload(true);
   };
 
-  const isAdminMode = URLContext.getContext().mode === "issuer";
+  const isIssuerMode = URLContext.getContext().mode === "issuer";
 
   return (
     <div>
@@ -116,7 +116,7 @@ export default function HelpMenu() {
           );
         })}
         <Divider />
-        {isAdminMode ? (
+        {isIssuerMode ? (
           <MenuItem onClick={onClickUserMode}>
             <ListItemIcon>
               <SupervisorAccountIcon sx={{ color: AppColors.Receiver }} />
@@ -126,12 +126,12 @@ export default function HelpMenu() {
             </ListItemText>
           </MenuItem>
         ) : (
-          <MenuItem onClick={onClickAdminMode}>
+          <MenuItem onClick={onClickIssuerMode}>
             <ListItemIcon>
               <AdminPanelSettingsIcon sx={{ color: AppColors.Issuer }} />
             </ListItemIcon>
             <ListItemText sx={{ color: AppColors.Issuer }}>
-              {t("Admin Mode")}
+              {t("Issuer Mode")}
             </ListItemText>
           </MenuItem>
         )}

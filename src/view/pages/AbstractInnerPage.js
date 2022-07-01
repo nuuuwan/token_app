@@ -3,11 +3,11 @@ import { Component } from "react";
 import AppColors from "../../view/_constants/AppColors";
 
 export default class AbstractInnerPage extends Component {
-  get showInOnlyAdminMode() {
+  get showInOnlyIssuerMode() {
     return true;
   }
 
   get color() {
-    return this.showInOnlyAdminMode ? AppColors.Issuer : AppColors.Receiver;
+    return this.showInOnlyIssuerMode ? AppColors.Issuer : AppColors.Receiver;
   }
 }

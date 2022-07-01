@@ -3,8 +3,8 @@
 # MEDIUM
 
 * Registry Page
-* SECURITY - Can't open other pages in Non-Admin Mode
-* Issuer Mode vs. Public Mode? Names Admin?
+* SECURITY - Can't open other pages in Non-Issuer Mode
+* Issuer Mode vs. Public Mode? Names Issuer?
 * Rename to "Issuer Public Key" on View Token
 
 # HIGH

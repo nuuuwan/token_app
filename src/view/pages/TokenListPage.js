@@ -19,7 +19,7 @@ export default class TokenListPage extends AbstractInnerPage {
   get Icon() {
     return ViewListIcon;
   }
-  get showInOnlyAdminMode() {
+  get showInOnlyIssuerMode() {
     return false;
   }
 

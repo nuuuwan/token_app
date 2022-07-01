@@ -18,7 +18,7 @@ export default class ViewTokenPage extends AbstractInnerPage {
   get Icon() {
     return QrCode2Icon;
   }
-  get showInOnlyAdminMode() {
+  get showInOnlyIssuerMode() {
     return false;
   }
 

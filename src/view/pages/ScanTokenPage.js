@@ -29,7 +29,7 @@ export default class ScanToken extends AbstractInnerPage {
   get Icon() {
     return QrCodeScannerIcon;
   }
-  get showInOnlyAdminMode() {
+  get showInOnlyIssuerMode() {
     return false;
   }
 
