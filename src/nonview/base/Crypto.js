@@ -20,7 +20,7 @@ const APP_KEY_PAIR = {
 };
 
 export default class Crypto {
-  static getNewNonce() {
+  static getNewNonceRaw() {
     return randomBytes(secretbox.nonceLength);
   }
 
@@ -46,46 +46,55 @@ export default class Crypto {
     localStorage.setItem(LOCAL_STORAGE_KEY_SECRET_KEY, keyPair.secretKey);
   }
 
-  static encryptToken(payload) {
+  static encrypt(payload) {
     const keyPair = Crypto.getKeyPairFromLocalStorage();
     if (!keyPair) {
       throw Error("No keyPair in localStorage!");
     }
-    const { publicKey, secretKey } = keyPair;
-    const nonceRaw = Crypto.getNewNonce();
-    const nonce = encodeBase64(nonceRaw);
 
-    const encryptedPayload = encodeBase64(
+    const nonceRaw = Crypto.getNewNonceRaw();
+
+    const encryptedMessageOnly = encodeBase64(
       box(
         decodeUTF8(JSON.stringify(payload)),
         nonceRaw,
         decodeBase64(APP_KEY_PAIR.publicKey),
-        decodeBase64(secretKey)
+        decodeBase64(keyPair.secretKey)
       )
     );
-    const tokenInner = {
-      nonce,
-      publicKey,
-      encryptedPayload,
+
+    const encryptedMessageInner = {
+      nonce: encodeBase64(nonceRaw),
+      writerPublicKey: keyPair.publicKey,
+      encryptedMessageOnly,
     };
-    const token = encodeBase64(decodeUTF8(JSON.stringify(tokenInner)));
-    return token;
+    const encryptedMessage = encodeBase64(
+      decodeUTF8(JSON.stringify(encryptedMessageInner))
+    );
+    return encryptedMessage;
   }
 
-  static decryptToken(token) {
-    const tokenInner = JSON.parse(encodeUTF8(decodeBase64(token)));
-    const { nonce, publicKey, encryptedPayload } = tokenInner;
+  static decrypt(encryptedMessage) {
+    if (!encryptedMessage) {
+      throw Error("Invalid encryptedMessage: " + encryptedMessage);
+    }
 
-    const payload = JSON.parse(
+    const encryptedMessageInner = JSON.parse(
+      encodeUTF8(decodeBase64(encryptedMessage))
+    );
+    const { nonce, writerPublicKey, encryptedMessageOnly } =
+      encryptedMessageInner;
+
+    const message = JSON.parse(
       encodeUTF8(
         box.open(
-          decodeBase64(encryptedPayload),
+          decodeBase64(encryptedMessageOnly),
           decodeBase64(nonce),
-          decodeBase64(publicKey),
+          decodeBase64(writerPublicKey),
           decodeBase64(APP_KEY_PAIR.secretKey)
         )
       )
     );
-    return { publicKey, payload };
+    return { writerPublicKey, message };
   }
 }
