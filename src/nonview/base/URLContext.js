@@ -52,8 +52,4 @@ export default class URLContext {
     const url = URLContext.getURL();
     return URLContext.urlToContext(url);
   }
-
-  static open(url) {
-    window.open(url, "_self");
-  }
 }

@@ -10,6 +10,11 @@ export default class WWW {
   constructor(url) {
     this.url = url;
   }
+
+  static open(url) {
+    window.history.pushState("", "", url);
+    window.location.reload(true);
+  }
 }
 
 export class JSONWWW extends WWW {
