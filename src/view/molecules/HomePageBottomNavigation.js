@@ -21,7 +21,7 @@ export default function HomePageBottomNavigation({ onClickOpenPage }) {
       elevation={3}
     >
       <BottomNavigation>
-        {PAGE_CONFIG_LIST.slice(0, 4).map(function (config) {
+        {PAGE_CONFIG_LIST.slice(0, 5).map(function (config) {
           const key = "button-" + config.page;
           if (config.showInOnlyIssuerMode && !isIssuerMode) {
             return null;

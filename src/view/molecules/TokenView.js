@@ -11,7 +11,8 @@ import WWW from "../../nonview/base/WWW";
 import AppColors from "../../view/_constants/AppColors";
 import TimeView from "../../view/atoms/TimeView";
 import LabelledText from "../../view/molecules/LabelledText";
-import TrustedSourceView from "../../view/molecules/TrustedSourceView";
+import {TRUSTED_ISSUER_IDX} from "../../nonview/core/TrustedIssuer"
+import TrustedIssuerView from "../../view/molecules/TrustedIssuerView";
 
 export default function TokenView({ token, short }) {
   const isExpired = token.timeExpiryUT < TimeX.getUnixTime();
@@ -21,8 +22,9 @@ export default function TokenView({ token, short }) {
     WWW.open(url);
   };
 
+  const trustedIssuer = TRUSTED_ISSUER_IDX[token.issuerPublicKey];
   const renderedSource = (
-    <TrustedSourceView publicKey={token.issuerPublicKey} />
+    <TrustedIssuerView trustedIssuer={trustedIssuer} short={short}/>
   );
   const renderedExpirationWarning = isExpired ? (
     <Alert severity="error">This Token has Expired</Alert>
@@ -31,7 +33,7 @@ export default function TokenView({ token, short }) {
   if (short) {
     return (
       <Card
-        sx={{ m: 0, p: 0, marginBottom: 5, cursor: "pointer" }}
+        sx={{ m: 0, p: 1, marginBottom: 3, cursor: "pointer" }}
         onClick={onClick}
       >
         <Box sx={{ display: "flex" }}>
@@ -53,8 +55,8 @@ export default function TokenView({ token, short }) {
             />
           </Box>
         </Box>
+        {renderedSource}              
         {renderedExpirationWarning}
-        {renderedSource}
       </Card>
     );
   } else {
@@ -72,9 +74,8 @@ export default function TokenView({ token, short }) {
           label="Creation"
           text={<TimeView ut={token.timeCreatedUT} />}
         />
-        <LabelledText label="Public Key" text={token.issuerPublicKey} />
-        {renderedExpirationWarning}
         {renderedSource}
+        {renderedExpirationWarning}
       </Stack>
     );
   }

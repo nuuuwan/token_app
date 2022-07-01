@@ -6,6 +6,8 @@ import LockIcon from "@mui/icons-material/Lock";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import LowPriorityIcon from "@mui/icons-material/LowPriority";
 import MoreTimeIcon from "@mui/icons-material/MoreTime";
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 
 import { t } from "../../nonview/base/I18N";
 
@@ -19,9 +21,11 @@ const LABEL_TO_ICON = {
   Creation: MoreTimeIcon,
   "Public Key": LockOpenIcon,
   "Secret Key": LockIcon,
+  "Trusted Issuer": VerifiedUserIcon,
+  "Issuer": AdminPanelSettingsIcon,
 };
 
-export default function IconLabel({ label, star, children }) {
+export default function IconLabel({ label, star, children , color}) {
   let Icon = LABEL_TO_ICON[label];
   if (!Icon) {
     Icon = DEFAULT_ICON;
@@ -30,8 +34,8 @@ export default function IconLabel({ label, star, children }) {
   const starStr = star ? "*" : "";
   return (
     <AlignCenter>
-      <Icon sx={{ opacity: 0.33 }} />
-      <Typography variant="caption" sx={{ opacity: 0.5 }}>
+      <Icon sx={{ opacity: 0.33, color }} />
+      <Typography variant="caption" sx={{ opacity: 0.5, color }}>
         {t(label) + starStr}
       </Typography>
       {children}

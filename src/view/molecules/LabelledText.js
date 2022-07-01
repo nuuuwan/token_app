@@ -43,7 +43,10 @@ export default function LabelledText({ label, text, color, noLabel }) {
       <Box sx={{ p: 0.5 }}>
         <IconLabel label={label} />
 
-        <Typography variant="h6" sx={{ color, wordWrap: "break-word" }}>
+        <Typography
+          variant="body1"
+          sx={{ color, wordWrap: "break-word", maxWidth: 400 }}
+        >
           {text}
         </Typography>
       </Box>

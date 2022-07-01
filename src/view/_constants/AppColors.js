@@ -10,6 +10,7 @@ const AppColors = {
 
   Invalid: "rgba(128,0,0,0.1)",
   Valid: "rgba(0,128,0,0.1)",
+  ValidText: SriLankaColors.Muslim,
 
   Light: "#ccc",
 };
