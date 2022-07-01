@@ -145,10 +145,10 @@ export default class Token {
   // URLs
 
   get url() {
-    const context = URLContext.getContext();
-    context.tokenEncrypted = this.tokenEncrypted;
-    context.page = "viewToken";
-    return URLContext.contextToURL(context);
+    return URLContext.contextToURL({
+      tokenEncrypted: this.tokenEncrypted,
+      page: "viewToken",
+    }).replace("http://localhost:3000", "https://nuuuwan.github.io");
   }
 
   open() {
