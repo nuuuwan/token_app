@@ -1,8 +1,9 @@
 # LOW
 
-# MEDIUM
+* Highlight open view
+* Align Icon and Text
 
-* Add Beep
+# MEDIUM
 
 # HIGH
 
