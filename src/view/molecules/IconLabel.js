@@ -21,7 +21,7 @@ const LABEL_TO_ICON = {
   "Secret Key": LockIcon,
 };
 
-export default function IconLabel({ label, star }) {
+export default function IconLabel({ label, star, children }) {
   let Icon = LABEL_TO_ICON[label];
   if (!Icon) {
     Icon = DEFAULT_ICON;
@@ -34,6 +34,7 @@ export default function IconLabel({ label, star }) {
       <Typography variant="caption" sx={{ opacity: 0.5 }}>
         {t(label) + starStr}
       </Typography>
+      {children}
     </AlignCenter>
   );
 }

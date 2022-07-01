@@ -22,6 +22,7 @@ export default function InputCryptoKey({
   selectedCryptoKey,
   onChangeCryptoKey,
   cryptoKeyType,
+  children,
 }) {
   if (!selectedCryptoKey) {
     selectedCryptoKey = "";
@@ -42,7 +43,9 @@ export default function InputCryptoKey({
         onChange={onChangeCryptoKey}
         multiline
         color={color}
-      />
+      >
+        {children}
+      </LabelledTextInput>
       {alertText ? <Alert severity="error">{t(alertText)}</Alert> : null}
     </Box>
   );

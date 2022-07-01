@@ -9,13 +9,16 @@ export default function LabelledTextInput({
   onChange,
   multiline,
   color,
+  children,
 }) {
   const onChangeInner = function (e) {
     onChange(e.target.value);
   };
   return (
     <Box sx={{ p: 0.5 }}>
-      <IconLabel label={label} star />
+      <IconLabel label={label} star>
+        {children}
+      </IconLabel>
       <TextField
         value={text}
         onChange={onChangeInner}
