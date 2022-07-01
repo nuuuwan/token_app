@@ -11,13 +11,30 @@ export const HOURS_IN = {
   YEAR: 24 * 365.25,
 };
 
-const DATE_FORMAT_LOCALE = "en-GB";
-const DATE_FORMAT_OPTIONS = {
-  month: "numeric",
-  day: "numeric",
-  hour: "numeric",
-  minute: "numeric",
-};
+const MONTHS = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+const DAYS = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
 
 export default class TimeX {
   static getUnixTime() {
@@ -33,14 +50,19 @@ export default class TimeX {
       return "";
     }
 
-    return new Date(ut * 1_000.0).toLocaleString(
-      DATE_FORMAT_LOCALE,
-      DATE_FORMAT_OPTIONS
+    const date = new Date(ut * 1_000.0);
+    return (
+      t(DAYS[date.getDay()]) +
+      ", " +
+      t(MONTHS[date.getMonth()]) +
+      " " +
+      date.getDate() +
+      ", " +
+      t("at 000", date.getHours() + ":" + date.getMinutes())
     );
   }
 
-  static getHumanTime(ut) {
-    const delta = TimeX.getUnixTime() - ut;
+  static formatDeltaTime(delta) {
     for (let [duration, label] of [
       [SECONDS_IN.DAY, "day"],
       [SECONDS_IN.HOUR, "hour"],
@@ -49,10 +71,20 @@ export default class TimeX {
       if (delta > duration) {
         const x = parseInt(delta / duration);
         const pluralStr = x === 1 ? "" : "s";
-        return t(`000 ${label}${pluralStr} ago`, x);
+        return t(`000 ${label}${pluralStr}`, x);
       }
     }
-
     return t("Now");
+  }
+
+  static getHumanTime(ut) {
+    const delta = ut - TimeX.getUnixTime();
+    const absDelta = Math.abs(delta);
+    const deltaStr = TimeX.formatDeltaTime(absDelta);
+    if (delta > 0) {
+      return t("In 000", deltaStr);
+    } else {
+      return t("000 ago", deltaStr);
+    }
   }
 }
