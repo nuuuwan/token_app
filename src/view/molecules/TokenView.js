@@ -31,12 +31,12 @@ export default function TokenView({ token, short }) {
   if (short) {
     return (
       <Card
-        sx={{ m: 1, p: 0, marginBottom: 3, cursor: "pointer" }}
+        sx={{ m: 0, p: 0, marginBottom: 5, cursor: "pointer" }}
         onClick={onClick}
       >
         <Box sx={{ display: "flex" }}>
           <Box>
-            <QRCode value={url} size={100} fgColor={AppColors.QRCode} />
+            <QRCode value={url} size={150} fgColor={AppColors.QRCode} />
           </Box>
           <Box sx={{ marginLeft: 2 }}>
             <LabelledText
