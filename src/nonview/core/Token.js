@@ -4,7 +4,7 @@ import TimeX, { SECONDS_IN } from "../../nonview/base/TimeX";
 import URLContext from "../../nonview/base/URLContext";
 import WWW from "../../nonview/base/WWW";
 
-const CACHE_KEY_TOKEN_IDX = "token-app-token-idx";
+const CACHE_KEY_TOKEN_IDX = "token-app-token-idx-v20220701-1154";
 
 const DEFAULT_TOKEN_AGE = SECONDS_IN.DAY * 3;
 
@@ -14,13 +14,15 @@ export default class Token {
     priority,
     timeCreatedUT,
     timeExpiryUT,
-    issuerPublicKey
+    issuerPublicKey,
+    tokenEncrypted
   ) {
     this.vehicleNumber = vehicleNumber;
     this.priority = priority;
     this.timeCreatedUT = timeCreatedUT;
     this.timeExpiryUT = timeExpiryUT;
     this.issuerPublicKey = issuerPublicKey;
+    this.tokenEncrypted = tokenEncrypted;
   }
 
   static createNew(vehicleNumber, priority) {
@@ -30,18 +32,34 @@ export default class Token {
     if (!keyPair || !keyPair.publicKey) {
       throw Error("Invalid keyPair");
     }
-    const issuerPublicKey = keyPair.publicKey;
-    return new Token(
+
+    const dPartial = {
       vehicleNumber,
       priority,
-      currentTimeUT,
-      currentTimeUT + DEFAULT_TOKEN_AGE,
-      issuerPublicKey
+      timeCreatedUT: currentTimeUT,
+      timeExpiryUT: currentTimeUT + DEFAULT_TOKEN_AGE,
+    };
+    return Token.fromDictPartial(
+      dPartial,
+      keyPair.publicKey,
+      Crypto.encrypt(dPartial)
     );
   }
 
   static cmpTimeExpiry(a, b) {
     return b.timeExpiryUT - a.timeExpiryUT;
+  }
+
+  static fromDictPartial(d, issuerPublicKey, tokenEncrypted) {
+    const token = new Token(
+      d["vehicleNumber"],
+      d["priority"],
+      d["timeCreatedUT"],
+      d["timeExpiryUT"],
+      issuerPublicKey,
+      tokenEncrypted
+    );
+    return token;
   }
 
   static fromDict(d) {
@@ -50,9 +68,19 @@ export default class Token {
       d["priority"],
       d["timeCreatedUT"],
       d["timeExpiryUT"],
-      d["issuerPublicKey"]
+      d["issuerPublicKey"],
+      d["tokenEncrypted"]
     );
     return token;
+  }
+
+  get dictPartial() {
+    return {
+      vehicleNumber: this.vehicleNumber,
+      priority: this.priority,
+      timeCreatedUT: this.timeCreatedUT,
+      timeExpiryUT: this.timeExpiryUT,
+    };
   }
 
   get dict() {
@@ -62,21 +90,17 @@ export default class Token {
       timeCreatedUT: this.timeCreatedUT,
       timeExpiryUT: this.timeExpiryUT,
       issuerPublicKey: this.issuerPublicKey,
+      tokenEncrypted: this.tokenEncrypted,
     };
-  }
-
-  // Crypto
-
-  get encrypted() {
-    return Crypto.encrypt(this.dict);
   }
 
   static fromEncrypted(tokenEncrypted) {
     const { writerPublicKey, message } = Crypto.decrypt(tokenEncrypted);
-    const token = Token.fromDict(message);
-    if (token.issuerPublicKey.localeCompare(writerPublicKey) !== 0) {
-      throw Error("Invalid token! issuerPublicKey !== writerPublicKey");
-    }
+    const token = Token.fromDictPartial(
+      message,
+      writerPublicKey,
+      tokenEncrypted
+    );
     return token;
   }
 
@@ -114,7 +138,7 @@ export default class Token {
 
   static addTokenToLocalTokenIdx(token) {
     let tokenIdx = Token.getLocalTokenIdx();
-    tokenIdx[token.encrypted] = token;
+    tokenIdx[token.tokenEncrypted] = token;
     Token.setLocalTokenIdx(tokenIdx);
   }
 
@@ -122,7 +146,7 @@ export default class Token {
 
   get url() {
     const context = {
-      tokenEncrypted: this.encrypted,
+      tokenEncrypted: this.tokenEncrypted,
       page: "viewToken",
     };
     return URLContext.contextToURL(context);
