@@ -1,9 +1,10 @@
-import FactCheckIcon from "@mui/icons-material/FactCheck";
 import Card from "@mui/material/Card";
-import AbstractInnerPage from "../../view/pages/AbstractInnerPage";
+import FactCheckIcon from "@mui/icons-material/FactCheck";
 
 import { TRUSTED_ISSUER_LIST } from "../../nonview/core/TrustedIssuer";
+
 import TrustedIssuerView from "../../view/molecules/TrustedIssuerView";
+import AbstractInnerPage from "../../view/pages/AbstractInnerPage";
 
 export default class TrustedIssuersPage extends AbstractInnerPage {
   get page() {

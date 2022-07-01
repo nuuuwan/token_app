@@ -7,11 +7,11 @@ import Stack from "@mui/material/Stack";
 
 import TimeX from "../../nonview/base/TimeX";
 import WWW from "../../nonview/base/WWW";
+import { TRUSTED_ISSUER_IDX } from "../../nonview/core/TrustedIssuer";
 
 import AppColors from "../../view/_constants/AppColors";
 import TimeView from "../../view/atoms/TimeView";
 import LabelledText from "../../view/molecules/LabelledText";
-import { TRUSTED_ISSUER_IDX } from "../../nonview/core/TrustedIssuer";
 import TrustedIssuerView from "../../view/molecules/TrustedIssuerView";
 
 export default function TokenView({ token, short }) {
