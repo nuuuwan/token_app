@@ -1,8 +1,8 @@
-import TimeX, { SECONDS_IN } from "../../nonview/base/TimeX";
 import Crypto from "../../nonview/base/Crypto";
-import WWW from "../../nonview/base/WWW";
-import URLContext from "../../nonview/base/URLContext";
 import IDX from "../../nonview/base/IDX";
+import TimeX, { SECONDS_IN } from "../../nonview/base/TimeX";
+import URLContext from "../../nonview/base/URLContext";
+import WWW from "../../nonview/base/WWW";
 
 const CACHE_KEY_TOKEN_IDX = "token-app-token-idx";
 
@@ -132,9 +132,19 @@ export default class Token {
     WWW.open(this.url);
   }
 
-  static fromURLContext() {
-    const context = URLContext.getContext();
+  static fromURL(url) {
+    return Token.fromContextOnly(URLContext.urlToContext(url));
+  }
+
+  static fromURLContext(url) {
+    return Token.fromContextOnly(URLContext.getContext());
+  }
+
+  static fromContextOnly(context) {
     const { tokenEncrypted } = context;
+    if (!tokenEncrypted) {
+      throw Error("tokenEncrypted missing in context");
+    }
 
     const tokenIdx = Token.getLocalTokenIdx();
     if (tokenIdx[tokenEncrypted]) {
