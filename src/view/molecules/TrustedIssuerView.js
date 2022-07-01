@@ -1,17 +1,16 @@
 import Alert from "@mui/material/Alert";
-import Paper from '@mui/material/Paper';
+import Paper from "@mui/material/Paper";
 import { t } from "../../nonview/base/I18N";
-import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
+import Avatar from "@mui/material/Avatar";
+import Stack from "@mui/material/Stack";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
-import Typography from '@mui/material/Typography';
-import AppColors from "../../view/_constants/AppColors"
-import Box from '@mui/material/Box';
-import LabelledText from "../../view/molecules/LabelledText"
-import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
-import AlignCenter from "../../view/atoms/AlignCenter"
-import IconLabel from "../../view/molecules/IconLabel"
-
+import Typography from "@mui/material/Typography";
+import AppColors from "../../view/_constants/AppColors";
+import Box from "@mui/material/Box";
+import LabelledText from "../../view/molecules/LabelledText";
+import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
+import AlignCenter from "../../view/atoms/AlignCenter";
+import IconLabel from "../../view/molecules/IconLabel";
 
 export default function TrustedIssuerView({ trustedIssuer, short }) {
   if (!trustedIssuer) {
@@ -23,12 +22,7 @@ export default function TrustedIssuerView({ trustedIssuer, short }) {
   }
 
   if (short) {
-    return (
-      <IconLabel
-        label="Trusted Issuer"
-        color={AppColors.ValidText}
-      />
-    );
+    return <IconLabel label="Trusted Issuer" color={AppColors.ValidText} />;
   } else {
     return (
       <Box>
@@ -45,6 +39,4 @@ export default function TrustedIssuerView({ trustedIssuer, short }) {
       </Box>
     );
   }
-
-
 }

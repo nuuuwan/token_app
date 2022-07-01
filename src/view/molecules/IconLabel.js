@@ -1,13 +1,13 @@
 import Typography from "@mui/material/Typography";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import CircleIcon from "@mui/icons-material/Circle";
 import DirectionsCarFilledIcon from "@mui/icons-material/DirectionsCarFilled";
 import LockIcon from "@mui/icons-material/Lock";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import LowPriorityIcon from "@mui/icons-material/LowPriority";
 import MoreTimeIcon from "@mui/icons-material/MoreTime";
-import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
-import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
+import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 
 import { t } from "../../nonview/base/I18N";
 
@@ -22,10 +22,10 @@ const LABEL_TO_ICON = {
   "Public Key": LockOpenIcon,
   "Secret Key": LockIcon,
   "Trusted Issuer": VerifiedUserIcon,
-  "Issuer": AdminPanelSettingsIcon,
+  Issuer: AdminPanelSettingsIcon,
 };
 
-export default function IconLabel({ label, star, children , color}) {
+export default function IconLabel({ label, star, children, color }) {
   let Icon = LABEL_TO_ICON[label];
   if (!Icon) {
     Icon = DEFAULT_ICON;

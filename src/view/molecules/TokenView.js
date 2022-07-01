@@ -11,7 +11,7 @@ import WWW from "../../nonview/base/WWW";
 import AppColors from "../../view/_constants/AppColors";
 import TimeView from "../../view/atoms/TimeView";
 import LabelledText from "../../view/molecules/LabelledText";
-import {TRUSTED_ISSUER_IDX} from "../../nonview/core/TrustedIssuer"
+import { TRUSTED_ISSUER_IDX } from "../../nonview/core/TrustedIssuer";
 import TrustedIssuerView from "../../view/molecules/TrustedIssuerView";
 
 export default function TokenView({ token, short }) {
@@ -24,7 +24,7 @@ export default function TokenView({ token, short }) {
 
   const trustedIssuer = TRUSTED_ISSUER_IDX[token.issuerPublicKey];
   const renderedSource = (
-    <TrustedIssuerView trustedIssuer={trustedIssuer} short={short}/>
+    <TrustedIssuerView trustedIssuer={trustedIssuer} short={short} />
   );
   const renderedExpirationWarning = isExpired ? (
     <Alert severity="error">This Token has Expired</Alert>
@@ -55,7 +55,7 @@ export default function TokenView({ token, short }) {
             />
           </Box>
         </Box>
-        {renderedSource}              
+        {renderedSource}
         {renderedExpirationWarning}
       </Card>
     );

@@ -1,9 +1,9 @@
 import FactCheckIcon from "@mui/icons-material/FactCheck";
-import Card from '@mui/material/Card';
+import Card from "@mui/material/Card";
 import AbstractInnerPage from "../../view/pages/AbstractInnerPage";
 
-import {TRUSTED_ISSUER_LIST} from "../../nonview/core/TrustedIssuer"
-import TrustedIssuerView from "../../view/molecules/TrustedIssuerView"
+import { TRUSTED_ISSUER_LIST } from "../../nonview/core/TrustedIssuer";
+import TrustedIssuerView from "../../view/molecules/TrustedIssuerView";
 
 export default class TrustedIssuersPage extends AbstractInnerPage {
   get page() {
@@ -21,17 +21,15 @@ export default class TrustedIssuersPage extends AbstractInnerPage {
   }
 
   render() {
-    return TRUSTED_ISSUER_LIST.map(
-      function(trustedIssuer, iTrustedIssuer) {
-        return (
-          <Card
-            key={'trustedIssuer-' + iTrustedIssuer}
-            sx={{ m: 0, p: 1, marginBottom: 5, cursor: "pointer" }}
-          >
-            <TrustedIssuerView trustedIssuer={trustedIssuer} />
-          </Card>
-        )
-      }
-    )
+    return TRUSTED_ISSUER_LIST.map(function (trustedIssuer, iTrustedIssuer) {
+      return (
+        <Card
+          key={"trustedIssuer-" + iTrustedIssuer}
+          sx={{ m: 0, p: 1, marginBottom: 5, cursor: "pointer" }}
+        >
+          <TrustedIssuerView trustedIssuer={trustedIssuer} />
+        </Card>
+      );
+    });
   }
 }
