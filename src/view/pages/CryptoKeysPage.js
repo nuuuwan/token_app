@@ -1,6 +1,8 @@
 import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
+import Tooltip from "@mui/material/Tooltip";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 import KeyIcon from "@mui/icons-material/Key";
 import SaveIcon from "@mui/icons-material/Save";
@@ -9,6 +11,7 @@ import Crypto, { CRYPTO_KEY_TYPE } from "../../nonview/base/Crypto";
 import { t } from "../../nonview/base/I18N";
 import Validate from "../../nonview/core/Validate";
 
+import AppColors from "../../view/_constants/AppColors";
 import AlignRight from "../../view/atoms/AlignRight";
 import InputCryptoKey from "../../view/molecules/InputCryptoKey";
 import TrustedSourceView from "../../view/molecules/TrustedSourceView";
@@ -89,22 +92,20 @@ export default class CryptoKeysPage extends AbstractInnerPage {
           </Alert>
         )}
 
-        <AlignRight>
-          <Button
-            onClick={this.onClickGenerate.bind(this)}
-            variant="contained"
-            startIcon={<AutorenewIcon />}
-            sx={{ backgroundColor: this.color }}
-          >
-            {t("Generate New Crypto Keys")}
-          </Button>
-        </AlignRight>
-
         <InputCryptoKey
           cryptoKeyType={CRYPTO_KEY_TYPE.PUBLIC}
           selectedCryptoKey={keyPair.publicKey}
           onChangeCryptoKey={this.onChangePublicKey.bind(this)}
-        />
+        >
+          <Tooltip title="Generate New Crypto Keys">
+            <IconButton onClick={this.onClickGenerate.bind(this)}>
+              <AutorenewIcon
+                sx={{ fontSize: "100%", color: AppColors.Issuer }}
+              />
+            </IconButton>
+          </Tooltip>
+        </InputCryptoKey>
+
         <TrustedSourceView publicKey={keyPair.publicKey} />
         <InputCryptoKey
           cryptoKeyType={CRYPTO_KEY_TYPE.SECRET}
