@@ -11,8 +11,8 @@ import AutorenewIcon from "@mui/icons-material/Autorenew";
 import BugReportIcon from "@mui/icons-material/BugReport";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import GoogleIcon from "@mui/icons-material/Google";
 import LanguageIcon from "@mui/icons-material/Language";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
 import SettingsIcon from "@mui/icons-material/Settings";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 
@@ -21,15 +21,11 @@ import URLContext from "../../nonview/base/URLContext";
 
 import AppColors from "../../view/_constants/AppColors";
 
-const URL_GOOGLE_DOC_HELP =
-  "https://docs.google.com/document" +
-  "/d/1poEUfKJYhf_x07zbJfiqch7jHXhWJVz5RLGsj0ULHQ0";
-
 const MENU_ITEM_LIST = [
   {
-    name: "Help (Google Doc)",
-    url: URL_GOOGLE_DOC_HELP,
-    Icon: GoogleIcon,
+    name: "Help (User Manual)",
+    url: "https://medium.com/on-technology/the-token-app-1b24a9cceaa1",
+    Icon: MenuBookIcon,
   },
   {
     name: "Code Repository",
