@@ -34,3 +34,5 @@ export const PAGE_CONFIG_IDX = IDX.build(
   (x) => x.page,
   (x) => x
 );
+
+export const DEFAULT_PAGE_CONFIG = PAGE_CONFIG_IDX["tokenList"];
