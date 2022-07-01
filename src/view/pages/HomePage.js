@@ -2,6 +2,7 @@ import { Component } from "react";
 
 import Box from "@mui/material/Box";
 
+import AudioX from "../../nonview/base/AudioX";
 import I18N, { BASE_LANG } from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
 
@@ -65,6 +66,7 @@ export default class HomePage extends Component {
   }
 
   onClickOpenPage(page) {
+    AudioX.playShort();
     let context = URLContext.getContext();
     context.page = page;
     this.setContext(context);
