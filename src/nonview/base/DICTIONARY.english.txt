@@ -1,8 +1,13 @@
-000 ago
 000 days
+000 days ago
 000 hours
+000 hours ago
 000 minutes
+000 minutes ago
+000 seconds
+000 seconds ago
 000 weeks
+000 weeks ago
 A Public Key is required to generate a token.
 A Secret Key is required to generate a token.
 A priority value is required to generate a token.
@@ -25,7 +30,13 @@ February
 Friday
 Generate New Crypto Keys
 Help (Google Doc)
+In 000
+In 000 days
+In 000 hours
+In 000 minutes
+In 000 seconds
 In 000 time
+In 000 weeks
 January
 July
 June
