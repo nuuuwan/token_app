@@ -1,4 +1,3 @@
-import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
@@ -14,7 +13,6 @@ import Validate from "../../nonview/core/Validate";
 import AppColors from "../../view/_constants/AppColors";
 import AlignRight from "../../view/atoms/AlignRight";
 import InputCryptoKey from "../../view/molecules/InputCryptoKey";
-import TrustedSourceView from "../../view/molecules/TrustedSourceView";
 import AbstractInnerPage from "../../view/pages/AbstractInnerPage";
 
 export default class CryptoKeysPage extends AbstractInnerPage {
@@ -82,16 +80,6 @@ export default class CryptoKeysPage extends AbstractInnerPage {
 
     return (
       <Stack spacing={1} sx={{ m: 1, p: 1 }}>
-        {isBrowserKeyPair ? (
-          <Alert severity="info">
-            {t("These Keys are saved on your Browser")}
-          </Alert>
-        ) : (
-          <Alert severity="warning">
-            {t("You have no CryptoKeys stored on your Browser.")}
-          </Alert>
-        )}
-
         <InputCryptoKey
           cryptoKeyType={CRYPTO_KEY_TYPE.PUBLIC}
           selectedCryptoKey={keyPair.publicKey}
@@ -106,7 +94,6 @@ export default class CryptoKeysPage extends AbstractInnerPage {
           </Tooltip>
         </InputCryptoKey>
 
-        <TrustedSourceView publicKey={keyPair.publicKey} />
         <InputCryptoKey
           cryptoKeyType={CRYPTO_KEY_TYPE.SECRET}
           selectedCryptoKey={keyPair.secretKey}
