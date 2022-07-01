@@ -5,8 +5,7 @@ import Stack from "@mui/material/Stack";
 import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
 
 import { t } from "../../nonview/base/I18N";
-import URLContext from "../../nonview/base/URLContext";
-import WWW from "../../nonview/base/WWW";
+import Token from "../../nonview/core/Token";
 
 import AbstractInnerPage from "../../view/pages/AbstractInnerPage";
 
@@ -42,13 +41,9 @@ export default class ScanToken extends AbstractInnerPage {
   onResult(result, error) {
     if (result && result.text) {
       const url = result.text;
-      this.setState({ url });
-      const context = URLContext.urlToContext(url);
-
-      if (context.token && context.page === "viewToken") {
-        console.debug("Openning URL: " + url);
-        WWW.open(url);
-      }
+      const token = Token.fromURL(url);
+      Token.addTokenToLocalTokenIdx(token);
+      token.open();
     }
   }
 
