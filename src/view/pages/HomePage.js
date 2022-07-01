@@ -79,14 +79,14 @@ export default class HomePage extends Component {
       if (config.page === context.page) {
         if (!config.showInOnlyIssuerMode || context.mode === "issuer") {
           context.page = config.page;
-          this.setContext(context);
+          URLContext.setContext(context);
           return config;
         }
       }
     }
 
     context.page = DEFAULT_PAGE_CONFIG.page;
-    this.setContext(context);
+    URLContext.setContext(context);
     return DEFAULT_PAGE_CONFIG;
   }
 
