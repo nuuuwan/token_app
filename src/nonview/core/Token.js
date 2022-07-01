@@ -145,10 +145,9 @@ export default class Token {
   // URLs
 
   get url() {
-    const context = {
-      tokenEncrypted: this.tokenEncrypted,
-      page: "viewToken",
-    };
+    const context = URLContext.getContext();
+    context.tokenEncrypted = this.tokenEncrypted;
+    context.page = "viewToken";
     return URLContext.contextToURL(context);
   }
 
