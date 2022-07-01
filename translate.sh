@@ -5,3 +5,7 @@ APP_NAME=token_app
 
 cd $DIR_I18N
 python3  build.py "$DIR_APP_PARENT/$APP_NAME/src/nonview/base"
+
+cd $DIR_APP_PARENT/$APP_NAME
+git add src/nonview/base/DICTIONARY.*
+git commit -m "I18N"
