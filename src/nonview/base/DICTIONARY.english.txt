@@ -25,6 +25,7 @@ Report Bugs
 Save to Browser
 Scan Token
 Scan the QR Code. You could also scan the code with any QR Code app.
+Scan the Token QR Code with your Device Camera. Alternatively, you could also scan the code with any QR Code app.
 Scan the Token QR Code with your Device Camera. You could also scan the code with any QR Code app.
 Secret Key
 Successfully scanned QR Code.
