@@ -1,8 +1,8 @@
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
-import IconLabel from "../../view/molecules/IconLabel";
 import AppColors from "../../view/_constants/AppColors";
+import IconLabel from "../../view/molecules/IconLabel";
 
 export default function LabelledTextInput({
   label,
