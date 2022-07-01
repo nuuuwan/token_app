@@ -11,18 +11,17 @@ import AppColors from "../../view/_constants/AppColors";
 import LabelledText from "../../view/molecules/LabelledText";
 import TrustedSourceView from "../../view/molecules/TrustedSourceView";
 
-export default function TokenView({ tokenInfo, short }) {
-  let { payload, publicKey, url } = tokenInfo;
-  url = url.replaceAll("mode:issuer", "mode:receiver");
-
-  const isExpired = payload.timeExpiryUT < TimeX.getUnixTime();
+export default function TokenView({ token, short }) {
+  const isExpired = token.timeExpiryUT < TimeX.getUnixTime();
   const color = isExpired ? "red" : "darkgreen";
-
+  const url = token.url;
   const onClick = function () {
     WWW.open(url);
   };
 
-  const renderedSource = <TrustedSourceView publicKey={publicKey} />;
+  const renderedSource = (
+    <TrustedSourceView publicKey={token.issuerPublicKey} />
+  );
 
   if (short) {
     return (
@@ -34,13 +33,13 @@ export default function TokenView({ tokenInfo, short }) {
           <Box sx={{ marginLeft: 2 }}>
             <LabelledText
               label="Vehicle Number"
-              text={payload.vehicleNumber}
+              text={token.vehicleNumber}
               noLabel
             />
-            <LabelledText label="Priority" text={payload.priority} noLabel />
+            <LabelledText label="Priority" text={token.priority} noLabel />
             <LabelledText
               label="Expiration"
-              text={TimeX.formatTime(payload.timeExpiryUT)}
+              text={TimeX.formatTime(token.timeExpiryUT)}
               color={color}
               noLabel
             />
@@ -54,19 +53,19 @@ export default function TokenView({ tokenInfo, short }) {
       <Stack spacing={1} sx={{ m: 1, p: 3 }}>
         <QRCode value={url} fgColor={AppColors.QRCode} />
         <Box>
-          <LabelledText label="Vehicle Number" text={payload.vehicleNumber} />
-          <LabelledText label="Priority" text={payload.priority} />
+          <LabelledText label="Vehicle Number" text={token.vehicleNumber} />
+          <LabelledText label="Priority" text={token.priority} />
           <LabelledText
             label="Expiration"
-            text={TimeX.formatTime(payload.timeExpiryUT)}
+            text={TimeX.formatTime(token.timeExpiryUT)}
             color={color}
           />
 
           <LabelledText
             label="Creation"
-            text={TimeX.formatTime(payload.timeCreatedUT)}
+            text={TimeX.formatTime(token.timeCreatedUT)}
           />
-          <LabelledText label="Public Key" text={publicKey} />
+          <LabelledText label="Public Key" text={token.issuerPublicKey} />
           {renderedSource}
         </Box>
       </Stack>

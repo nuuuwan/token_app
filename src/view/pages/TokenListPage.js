@@ -1,9 +1,7 @@
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 import ViewListIcon from "@mui/icons-material/ViewList";
-
-import LocalTokenStore from "../../nonview/core/LocalTokenStore";
-
+import Token from "../../nonview/core/Token";
 import PageLink from "../../view/molecules/PageLink";
 import TokenView from "../../view/molecules/TokenView";
 import AbstractInnerPage from "../../view/pages/AbstractInnerPage";
@@ -24,9 +22,9 @@ export default class TokenListPage extends AbstractInnerPage {
   }
 
   renderTokenList() {
-    const tokenInfoList = LocalTokenStore.getTokenInfoList();
+    const tokenList = Token.getLocalTokenList();
 
-    if (!tokenInfoList || tokenInfoList.length === 0) {
+    if (tokenList.length === 0) {
       return (
         <Alert severity="warning">
           You have no tokens stored on this device.
@@ -38,8 +36,8 @@ export default class TokenListPage extends AbstractInnerPage {
       );
     }
 
-    return tokenInfoList.map(function (tokenInfo, iToken) {
-      return <TokenView key={"token-" + iToken} tokenInfo={tokenInfo} short />;
+    return tokenList.map(function (token, iToken) {
+      return <TokenView key={"token-" + iToken} token={token} short />;
     });
   }
   render() {

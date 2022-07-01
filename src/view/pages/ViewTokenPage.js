@@ -1,9 +1,7 @@
 import Box from "@mui/material/Box";
 import QrCode2Icon from "@mui/icons-material/QrCode2";
 
-import Crypto from "../../nonview/base/Crypto";
-import URLContext from "../../nonview/base/URLContext";
-import LocalTokenStore from "../../nonview/core/LocalTokenStore";
+import Token from "../../nonview/core/Token";
 
 import TokenView from "../../view/molecules/TokenView";
 import AbstractInnerPage from "../../view/pages/AbstractInnerPage";
@@ -24,21 +22,11 @@ export default class ViewTokenPage extends AbstractInnerPage {
   }
 
   render() {
-    const url = URLContext.getURL();
-    let tokenInfo = LocalTokenStore.getTokenInfoFromURL(url);
-
-    if (!tokenInfo) {
-      const context = URLContext.getContext();
-      const { token } = context;
-      const { publicKey, payload } = Crypto.decryptToken(token);
-
-      tokenInfo = { publicKey, payload, url };
-      LocalTokenStore.addTokenInfo(tokenInfo);
-    }
+    const token = Token.fromURLContext();
 
     return (
       <Box>
-        <TokenView tokenInfo={tokenInfo} />
+        <TokenView token={token} />
       </Box>
     );
   }

@@ -5,8 +5,7 @@ import NoteAddIcon from "@mui/icons-material/NoteAdd";
 
 import Crypto from "../../nonview/base/Crypto";
 import { t } from "../../nonview/base/I18N";
-import TimeX, { SECONDS_IN } from "../../nonview/base/TimeX";
-import URLContext from "../../nonview/base/URLContext";
+import Token from "../../nonview/core/Token";
 import Validate from "../../nonview/core/Validate";
 
 import AlignRight from "../../view/atoms/AlignRight";
@@ -36,19 +35,9 @@ export default class CreateTokenPage extends AbstractInnerPage {
 
   onClickCreateToken() {
     const { vehicleNumber, priority } = this.state;
-    const currentTimeUT = TimeX.getUnixTime();
-    const token = Crypto.encryptToken({
-      vehicleNumber,
-      priority,
-      timeCreatedUT: currentTimeUT,
-      timeExpiryUT: currentTimeUT + SECONDS_IN.DAY,
-    });
-
-    let context = URLContext.getContext();
-    context.token = token;
-    context.page = "viewToken";
-    URLContext.setContext(context);
-    window.location.reload(true);
+    const token = Token.createNew(vehicleNumber, priority);
+    Token.addTokenToLocalTokenIdx(token);
+    token.open();
   }
 
   onChangeVehicleNumber(vehicleNumber) {
