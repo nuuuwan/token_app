@@ -33,9 +33,15 @@ export default class ScanToken extends AbstractInnerPage {
     return false;
   }
 
+  constructor(props) {
+    super(props);
+    this.state = { url: null };
+  }
+
   onResult(result, error) {
     if (result && result.text) {
       const url = result.text;
+      this.setState({ url });
       const context = URLContext.urlToContext(url);
 
       if (context.token && context.page === "viewToken") {
@@ -48,6 +54,11 @@ export default class ScanToken extends AbstractInnerPage {
   render() {
     return (
       <Stack spacing={1} sx={{ m: 1, p: 1 }}>
+        <Alert severity="info">
+          {t(
+            "Scan the Token QR Code with your Device Camera. Alternatively, you could also scan the code with any QR Code app."
+          )}
+        </Alert>
         <QrReader
           onResult={this.onResult.bind(this)}
           style={STYLE_QR_READER}
@@ -56,11 +67,9 @@ export default class ScanToken extends AbstractInnerPage {
             facingMode: "environment",
           }}
         />
-        <Alert severity="info">
-          {t(
-            "Scan the QR Code. You could also scan the code with any QR Code app."
-          )}
-        </Alert>
+        {this.state.url ? (
+          <Alert severity="success">{t("Successfully scanned QR Code.")}</Alert>
+        ) : null}
       </Stack>
     );
   }
