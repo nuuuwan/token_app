@@ -31,6 +31,7 @@ Friday
 Generate Crypto Keys
 Generate New Crypto Keys
 Help (Google Doc)
+Help (User Manual)
 In 000
 In 000 days
 In 000 hours
