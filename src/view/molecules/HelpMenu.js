@@ -85,12 +85,7 @@ export default function HelpMenu() {
           <SettingsIcon sx={{ color: "primary" }} />
         </IconButton>
       </Box>
-      <Menu
-        anchorEl={anchorEl}
-        open={open}
-        onClose={onClose}
-        onClick={onClose}
-      >
+      <Menu anchorEl={anchorEl} open={open} onClose={onClose} onClick={onClose}>
         {LANG_LIST.map(function (lang, iLang) {
           const currentLang = I18N.getLang();
           if (currentLang === lang.lang) {
