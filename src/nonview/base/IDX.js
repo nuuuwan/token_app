@@ -6,4 +6,11 @@ export default class IDX {
     }
     return idx;
   }
+
+  static map(idx, fKeyMap, fValueMap) {
+    return Object.entries(idx).reduce(function (mappedIdx, [k, v]) {
+      mappedIdx[fKeyMap(k)] = fValueMap(v);
+      return mappedIdx;
+    }, {});
+  }
 }
