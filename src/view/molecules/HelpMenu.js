@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -78,18 +79,17 @@ export default function HelpMenu() {
   const isIssuerMode = URLContext.getContext().mode === "issuer";
 
   return (
-    <div>
-      <IconButton onClick={onClick}>
-        <SettingsIcon sx={{ color: "primary" }} />
-      </IconButton>
+    <Box>
+      <Box>
+        <IconButton onClick={onClick}>
+          <SettingsIcon sx={{ color: "primary" }} />
+        </IconButton>
+      </Box>
       <Menu
-        id="basic-menu"
         anchorEl={anchorEl}
         open={open}
         onClose={onClose}
-        MenuListProps={{
-          "aria-labelledby": "basic-button",
-        }}
+        onClick={onClose}
       >
         {LANG_LIST.map(function (lang, iLang) {
           const currentLang = I18N.getLang();
@@ -167,6 +167,6 @@ export default function HelpMenu() {
           <ListItemText>{t("Clear Local Cache")}</ListItemText>
         </MenuItem>
       </Menu>
-    </div>
+    </Box>
   );
 }
