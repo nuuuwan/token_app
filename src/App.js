@@ -16,8 +16,9 @@ const THEME = createTheme({
     },
   },
   typography: {
-    fontFamily: ["Cambay", "Cabin", "sans-serif"].join(","),
-    fontSize: 13,
+    fontFamily: ["Duru Sans", "Dosis", "Darker Grotesque", "sans-serif"].join(
+      ","
+    ),
   },
 });
 
