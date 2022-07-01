@@ -13,7 +13,7 @@ import PAGE_CONFIG_LIST from "../../view/pages/PAGE_CONFIG_LIST";
 
 export default function HomePageBottomNavigation({ onClickOpenPage }) {
   const context = URLContext.getContext();
-
+  const activePage = context.page;
   const isAdminMode = context.mode === "issuer";
   return (
     <Paper
@@ -26,9 +26,14 @@ export default function HomePageBottomNavigation({ onClickOpenPage }) {
           if (config.showInOnlyAdminMode && !isAdminMode) {
             return null;
           }
-          const color = config.showInOnlyAdminMode
-            ? AppColors.Issuer
-            : AppColors.Receiver;
+          const isActive = config.page === activePage;
+
+          const color = isActive
+            ? config.showInOnlyAdminMode
+              ? AppColors.Issuer
+              : AppColors.Receiver
+            : AppColors.Light;
+
           return (
             <Tooltip key={key} title={t(config.label)}>
               <BottomNavigationAction
